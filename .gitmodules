@@ -1,0 +1,12 @@
+[submodule "include/cti"]
+	path = include/cti
+	url = https://github.com/dimitriGarrett/cti
+[submodule "src/cti"]
+	path = src/cti
+	url = https://github.com/dimitriGarrett/cti
+[submodule "src/glm"]
+	path = src/glm
+	url = https://github.com/g-truc/glm
+[submodule "include/glm"]
+	path = include/glm
+	url = https://github.com/g-truc/glm
