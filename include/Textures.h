@@ -981,6 +981,19 @@ namespace GL
 	GLCW_API void getTextureImage(unsigned int texture, int level, TextureGetFormat format, TextureTypes type, int bufSize, void* pixels);
 #endif
 
+	static constexpr unsigned int REPEAT = 0x2901;
+	static constexpr unsigned int CLAMP = 0x2900;
+	static constexpr unsigned int MIRRORED_REPEAT = 0x8370;
+	static constexpr unsigned int CLAMP_TO_EDGE = 0x812F;
+	static constexpr unsigned int CLAMP_TO_BORDER = 0x812D;
+
+	static constexpr unsigned int NEAREST = 0x2600;
+	static constexpr unsigned int LINEAR = 0x2601;
+	static constexpr unsigned int NEAREST_MIPMAP_NEAREST = 0x2700;
+	static constexpr unsigned int LINEAR_MIPMAP_NEAREST = 0x2701;
+	static constexpr unsigned int NEAREST_MIPMAP_LINEAR = 0x2702;
+	static constexpr unsigned int LINEAR_MIPMAP_LINEAR = 0x2703;
+	
 #if GL_DESKTOP || EC(3, 1)
 	//glGetTexLevelParameter — return texture parameter values for a specific level of detail
 	GLCW_API void getTexLevelParameterfv(TextureGetTexLevelTargets target, int level, TextureGetPname pname, float* params);
