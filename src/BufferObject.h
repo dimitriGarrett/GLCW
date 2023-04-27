@@ -18,8 +18,6 @@ namespace GL
 	using ptrdiff_t = int;
 #endif
 
-	//test
-
 	using sizeiptr = ptrdiff_t;
 
 	static constexpr BITFIELD_WRAP(0x0001) MAP_READ_BIT;
