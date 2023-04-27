@@ -36,7 +36,7 @@ inline bool GL::isVertexArray(unsigned int array)
 		glGetVertexArrayIndexed64iv(vaobj, index, GL_VERTEX_BINDING_OFFSET, param);
 	}
 
-	inline void GL::getVertexArrayIndexediv(unsigned int vaobj, unsigned int index, VertexArrayParameter pname, int* param)
+	inline void GL::getVertexArrayIndexediv(unsigned int vaobj, unsigned int index, GL_ENUM pname, int* param)
 	{
 		glGetVertexArrayIndexediv(vaobj, index, static_cast<unsigned int>(pname), param);
 	}
@@ -48,7 +48,7 @@ inline bool GL::isVertexArray(unsigned int array)
 		return temp;
 	}
 
-	inline int GL::getVertexArrayIndexediv(unsigned int vaobj, unsigned int index, VertexArrayParameter pname)
+	inline int GL::getVertexArrayIndexediv(unsigned int vaobj, unsigned int index, GL_ENUM pname)
 	{
 		int temp;
 		getVertexArrayIndexediv(vaobj, index, pname, &temp);
@@ -68,79 +68,79 @@ inline bool GL::isVertexArray(unsigned int array)
 	}
 #endif
 #if GL_DESKTOP
-	inline void GL::getVertexAttribdv(unsigned int index, VertexAttribParameter pname, double* params)
+	inline void GL::getVertexAttribdv(unsigned int index, GL_ENUM pname, double* params)
 	{
 		glGetVertexAttribdv(index, static_cast<unsigned int>(pname), params);
 	}
 
-	inline double GL::getVertexAttribdv(unsigned int index, VertexAttribParameteri pname)
+	inline double GL::getVertexAttribdv(unsigned int index, GL_ENUM pname)
 	{
 		double temp;
-		getVertexAttribdv(index, static_cast<VertexAttribParameter>(pname), &temp);
+		getVertexAttribdv(index, pname, &temp);
 		return temp;
 	}
 #endif
 
-inline void GL::getVertexAttribfv(unsigned int index, VertexAttribParameter pname, float* params)
+inline void GL::getVertexAttribfv(unsigned int index, GL_ENUM pname, float* params)
 {
 	glGetVertexAttribfv(index, static_cast<unsigned int>(pname), params);
 }
 
-inline float GL::getVertexAttribfv(unsigned int index, VertexAttribParameteri pname)
+inline float GL::getVertexAttribfv(unsigned int index, GL_ENUM pname)
 {
 	float temp;
-	getVertexAttribfv(index, static_cast<VertexAttribParameter>(pname), &temp);
+	getVertexAttribfv(index, pname, &temp);
 	return temp;
 }
 
-inline void GL::getVertexAttribiv(unsigned int index, VertexAttribParameter pname, int* params)
+inline void GL::getVertexAttribiv(unsigned int index, GL_ENUM pname, int* params)
 {
 	glGetVertexAttribiv(index, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getVertexAttribiv(unsigned int index, VertexAttribParameteri pname)
+inline int GL::getVertexAttribiv(unsigned int index, GL_ENUM pname)
 {
 	int temp;
-	getVertexAttribiv(index, static_cast<VertexAttribParameter>(pname), &temp);
+	getVertexAttribiv(index, pname, &temp);
 	return temp;
 }
 
 #if GL_DESKTOP || EC(3, 0)
-inline void GL::getVertexAttribIiv(unsigned int index, VertexAttribParameter pname, int* params)
+inline void GL::getVertexAttribIiv(unsigned int index, GL_ENUM pname, int* params)
 {
 	glGetVertexAttribIiv(index, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getVertexAttribIiv(unsigned int index, VertexAttribParameteri pname)
+inline int GL::getVertexAttribIiv(unsigned int index, GL_ENUM pname)
 {
 	int temp;
-	getVertexAttribIiv(index, static_cast<VertexAttribParameter>(pname), &temp);
+	getVertexAttribIiv(index, pname, &temp);
 	return temp;
 }
 
-inline void GL::getVertexAttribIuiv(unsigned int index, VertexAttribParameter pname, unsigned int* params)
+inline void GL::getVertexAttribIuiv(unsigned int index, GL_ENUM pname, unsigned int* params)
 {
 	glGetVertexAttribIuiv(index, static_cast<unsigned int>(pname), params);
 }
 
-inline unsigned int GL::getVertexAttribIuiv(unsigned int index, VertexAttribParameteri pname)
+inline unsigned int GL::getVertexAttribIuiv(unsigned int index, GL_ENUM pname)
 {
 	unsigned int temp;
-	getVertexAttribIuiv(index, static_cast<VertexAttribParameter>(pname), &temp);
+	getVertexAttribIuiv(index, pname, &temp);
 	return temp;
 }
 #endif
 
 #if VC(4, 1)
-	inline void GL::getVertexAttribLdv(unsigned int index, VertexAttribParameter pname, double* params)
+	inline void GL::getVertexAttribLdv(unsigned int index, GL_ENUM pname, double* params)
 	{
 		glGetVertexAttribLdv(index, static_cast<unsigned int>(pname), params);
 	}
 
-	inline double GL::getVertexAttribLdv(unsigned int index, VertexAttribParameteri pname)
+	inline double GL::getVertexAttribLdv(unsigned int index, GL_ENUM pname)
 	{
 		double temp;
-		getVertexAttribLdv(index, static_cast<VertexAttribParameter>(pname), &temp);
+		getVertexAttribLdv(index, pname, &temp);
 		return temp;
 	}
 #endif

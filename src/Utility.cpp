@@ -19,21 +19,21 @@
 #endif
 
 #if VC(4, 5)
-	inline GL::UtilityGraphicResetStatus GL::getGraphicsResetStatus()
+	inline GL::GL_ENUM GL::getGraphicsResetStatus()
 	{
-		return static_cast<UtilityGraphicResetStatus>(glGetGraphicsResetStatus());
+		return static_cast<GL_ENUM>(glGetGraphicsResetStatus());
 	}
 #endif
 
 #if VC(4, 2) || EC(3, 0)
-	inline void GL::getInternalformativ(UtilityTextureTarget target, TextureInternalFormats internalFormat, UtilityPname pname, int bufSize, int* params)
+	inline void GL::getInternalformativ(GL_ENUM target, GL_ENUM internalFormat, GL_ENUM pname, int bufSize, int* params)
 	{
 		glGetInternalformativ(static_cast<unsigned int>(target), static_cast<unsigned int>(internalFormat), static_cast<unsigned int>(pname), bufSize, params);
 	}
 #endif
 
 #if VC(4, 3)
-	inline void GL::getInternalformati64v(UtilityTextureTarget target, TextureInternalFormats internalFormat, UtilityPname pname, int bufSize, signed long long* params)
+	inline void GL::getInternalformati64v(GL_ENUM target, GL_ENUM internalFormat, GL_ENUM pname, int bufSize, signed long long* params)
 	{
 		glGetInternalformati64v(static_cast<unsigned int>(target), static_cast<unsigned int>(internalFormat), static_cast<unsigned int>(pname), bufSize, params);
 	}
@@ -53,13 +53,13 @@
 	}
 #endif
 
-inline std::string_view GL::getString(UtilityStringName name)
+inline std::string_view GL::getString(GL_ENUM name)
 {
 	return std::string_view(reinterpret_cast<const char*>(glGetString(static_cast<unsigned int>(name))));
 }
 
 #if GL_DESKTOP || EC(3, 0)
-	inline std::string_view GL::getStringi(UtilityStringNamei name, unsigned int index)
+	inline std::string_view GL::getStringi(GL_ENUM name, unsigned int index)
 	{
 		return std::string_view(reinterpret_cast<const char*>(glGetStringi(static_cast<unsigned int>(name), index)));
 	}

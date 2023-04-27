@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cti/cti_type_info.h"
+#include "cti/cti/cti_type_info.h"
 
 namespace GL
 {

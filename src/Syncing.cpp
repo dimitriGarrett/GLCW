@@ -3,9 +3,9 @@
 #if GL_DESKTOP || EC(3, 0)
 	#include "GL.h"
 
-	inline GL::SyncSignals GL::clientWaitSync(GLsync sync, unsigned int flags, size_t timeout)
+	inline GL::GL_ENUM GL::clientWaitSync(GLsync sync, unsigned int flags, size_t timeout)
 	{
-		return static_cast<SyncSignals>(glClientWaitSync(sync, flags, timeout));
+		return static_cast<GL_ENUM>(glClientWaitSync(sync, flags, timeout));
 	}
 
 	inline void GL::deleteSync(GLsync sync)
@@ -18,12 +18,12 @@
 		return glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, flags);
 	}
 
-	inline void GL::getSynciv(GLsync sync, SyncGetPname pname, int bufSize, int* length, int* values)
+	inline void GL::getSynciv(GLsync sync, GL_ENUM pname, int bufSize, int* length, int* values)
 	{
 		glGetSynciv(sync, static_cast<unsigned int>(pname), bufSize, length, values);
 	}
 
-	inline int GL::getSynciv(GLsync sync, SyncGetPname pname)
+	inline int GL::getSynciv(GLsync sync, GL_ENUM pname)
 	{
 		int temp;
 		getSynciv(sync, pname, sizeof(int), nullptr, &temp);

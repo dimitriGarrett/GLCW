@@ -2,7 +2,7 @@
 #include "GL.h"
 
 #if GL_DESKTOP || EC(3, 0)
-	inline void GL::beginTransformFeedback(TransformPrimitives primitiveMode)
+	inline void GL::beginTransformFeedback(GL_ENUM primitiveMode)
 	{
 		glBeginTransformFeedback(static_cast<unsigned int>(primitiveMode));
 	}
@@ -35,25 +35,25 @@
 #endif
 
 #if VC(4, 0)
-	inline void GL::drawTransformFeedback(TransformRenderPrimitives mode, unsigned int id)
+	inline void GL::drawTransformFeedback(GL_ENUM mode, unsigned int id)
 	{
 		glDrawTransformFeedback(static_cast<unsigned int>(mode), id);
 	}
 #endif
 #if VC(4, 2)
-	inline void GL::drawTransformFeedbackInstanced(TransformRenderPrimitives mode, unsigned int id, int primcount)
+	inline void GL::drawTransformFeedbackInstanced(GL_ENUM mode, unsigned int id, int primcount)
 	{
 		glDrawTransformFeedbackInstanced(static_cast<unsigned int>(mode), id, primcount);
 	}
 #endif
 #if VC(4, 0)
-	inline void GL::drawTransformFeedbackStream(TransformRenderPrimitives mode, unsigned int id, unsigned int stream)
+	inline void GL::drawTransformFeedbackStream(GL_ENUM mode, unsigned int id, unsigned int stream)
 	{
 		glDrawTransformFeedbackStream(static_cast<unsigned int>(mode), id, stream);
 	}
 #endif
 #if VC(4, 2)
-	inline void GL::drawTransformFeedbackStreamInstanced(TransformRenderPrimitives mode, unsigned int id, unsigned int stream, int primcount)
+	inline void GL::drawTransformFeedbackStreamInstanced(GL_ENUM mode, unsigned int id, unsigned int stream, int primcount)
 	{
 		glDrawTransformFeedbackStreamInstanced(static_cast<unsigned int>(mode), id, stream, primcount);
 	}
@@ -67,17 +67,17 @@
 #endif
 
 #if VC(4, 5)
-	inline void GL::getTransformFeedbackiv(unsigned int xfb, TransformQueries query, int* param)
+	inline void GL::getTransformFeedbackiv(unsigned int xfb, GL_ENUM query, int* param)
 	{
 		glGetTransformFeedbackiv(xfb, static_cast<unsigned int>(query), param);
 	}
 
-	inline void GL::getTransformFeedbacki_v(unsigned xfb, TransformQueries query, unsigned int index, int* param)
+	inline void GL::getTransformFeedbacki_v(unsigned xfb, GL_ENUM query, unsigned int index, int* param)
 	{
 		glGetTransformFeedbacki_v(xfb, static_cast<unsigned int>(query), index, param);
 	}
 
-	inline void GL::getTransformFeedbacki64_v(unsigned xfb, TransformQueries query, unsigned int index, signed long long* param)
+	inline void GL::getTransformFeedbacki64_v(unsigned xfb, GL_ENUM query, unsigned int index, signed long long* param)
 	{
 		glGetTransformFeedbacki64_v(xfb, static_cast<unsigned int>(query), index, param);
 	}
@@ -134,12 +134,12 @@
 #endif
 
 #if GL_DESKTOP || EC(3, 0)
-	inline void GL::transformFeedbackVaryings(unsigned int program, int count, const char** varyings, TransformAttribs bufferMode)
+	inline void GL::transformFeedbackVaryings(unsigned int program, int count, const char** varyings, GL_ENUM bufferMode)
 	{
 		glTransformFeedbackVaryings(program, count, varyings, static_cast<unsigned int>(bufferMode));
 	}
 
-	inline void GL::transformFeedbackVaryings(unsigned int program, const std::vector<const char*>& varyings, TransformAttribs bufferMode)
+	inline void GL::transformFeedbackVaryings(unsigned int program, const std::vector<const char*>& varyings, GL_ENUM bufferMode)
 	{
 		transformFeedbackVaryings(program, static_cast<int>(varyings.size()), const_cast<const char**>(&varyings.front()), bufferMode);
 	}

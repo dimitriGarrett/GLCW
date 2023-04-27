@@ -31,12 +31,12 @@
 		glGenProgramPipelines(n, pipelines);
 	}
 
-	inline void GL::getProgramPipelineiv(unsigned int pipeline, ProgramPipelineGets pname, int* params)
+	inline void GL::getProgramPipelineiv(unsigned int pipeline, GL_ENUM pname, int* params)
 	{
 		glGetProgramPipelineiv(pipeline, static_cast<unsigned int>(pname), params);
 	}
 
-	inline int GL::getProgramPipelineiv(unsigned int pipeline, ProgramPipelineGets pname)
+	inline int GL::getProgramPipelineiv(unsigned int pipeline, GL_ENUM pname)
 	{
 		int temp;
 		getProgramPipelineiv(pipeline, pname, &temp);
@@ -52,7 +52,7 @@
 	{
 		//TODO: use glGetProgram to get the max info log length instead of hardcoding 1024
 		int length;
-		std::string temp(getProgramPipelineiv(pipeline, ProgramPipelineGets::INFO_LOG_LENGTH), ' ');
+		std::string temp(getProgramPipelineiv(pipeline, INFO_LOG_LENGTH), ' ');
 	
 		getProgramPipelineInfoLog(pipeline, static_cast<int>(temp.size()), &length, &temp.front());
 

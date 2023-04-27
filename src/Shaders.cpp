@@ -33,18 +33,18 @@ inline unsigned int GL::createProgram()
 	return glCreateProgram();
 }
 
-inline unsigned int GL::createShader(ShaderStage shaderType)
+inline unsigned int GL::createShader(GL_ENUM shaderType)
 {
 	return glCreateShader(static_cast<unsigned int>(shaderType));
 }
 
 #if VC(4, 1) || EC(3, 1)
-inline unsigned int GL::createShaderProgramv(ShaderStage type, int count, const char** strings)
+inline unsigned int GL::createShaderProgramv(GL_ENUM type, int count, const char** strings)
 {
 	return glCreateShaderProgramv(static_cast<unsigned int>(type), count, strings);
 }
 
-inline unsigned int GL::createShaderProgramv(ShaderStage type, const std::vector<std::string>& strings)
+inline unsigned int GL::createShaderProgramv(GL_ENUM type, const std::vector<std::string>& strings)
 {
 	std::vector<const char*> temp = std::vector<const char*>(strings.size(), "");
 
@@ -73,12 +73,12 @@ inline void GL::detachShader(unsigned int program, unsigned int shader)
 }
 
 #if VC(4, 2)
-inline void GL::getActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, ShaderAtomicParameter pname, int* params)
+inline void GL::getActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, GL_ENUM pname, int* params)
 {
 	glGetActiveAtomicCounterBufferiv(program, bufferIndex, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, ShaderAtomicParameter pname)
+inline int GL::getActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, GL_ENUM pname)
 {
 	int temp;
 	getActiveAtomicCounterBufferiv(program, bufferIndex, pname, &temp);
@@ -86,14 +86,14 @@ inline int GL::getActiveAtomicCounterBufferiv(unsigned int program, unsigned int
 }
 #endif
 
-inline void GL::getActiveAttrib(unsigned int program, unsigned int index, int bufSize, int* length, int* size, ShaderTypes* type, char* name)
+inline void GL::getActiveAttrib(unsigned int program, unsigned int index, int bufSize, int* length, int* size, GL_ENUM* type, char* name)
 {
 	glGetActiveAttrib(program, index, bufSize, length, size, reinterpret_cast<unsigned int*>(type), name);
 }
 
-inline std::tuple<int, GL::ShaderTypes, std::string> GL::getActiveAttrib(unsigned int program, unsigned int index)
+inline std::tuple<int, GL::GL_ENUM, std::string> GL::getActiveAttrib(unsigned int program, unsigned int index)
 {
-	std::tuple<int, ShaderTypes, std::string> temp = std::make_tuple(0, ShaderTypes::FLOAT, std::string(getProgramiv(program, ProgramGetParameteri::ACTIVE_ATTRIBUTE_MAX_LENGTH), ' '));
+	std::tuple<int, GL_ENUM, std::string> temp = std::make_tuple(0, FLOAT, std::string(getProgramiv(program, ACTIVE_ATTRIBUTE_MAX_LENGTH), ' '));
 	int length;
 	getActiveAttrib(program, index, static_cast<int>(std::get<2>(temp).size()), &length, &std::get<0>(temp), &std::get<1>(temp), &std::get<2>(temp).front());
 	std::get<2>(temp) = std::get<2>(temp).substr(0, length);
@@ -101,12 +101,12 @@ inline std::tuple<int, GL::ShaderTypes, std::string> GL::getActiveAttrib(unsigne
 }
 
 #if VC(4, 0)
-inline void GL::getActiveSubroutineName(unsigned int program, ShaderStage shadertype, unsigned int index, int bufsize, int* length, char* name)
+inline void GL::getActiveSubroutineName(unsigned int program, GL_ENUM shadertype, unsigned int index, int bufsize, int* length, char* name)
 {
 	glGetActiveSubroutineName(program, static_cast<unsigned int>(shadertype), index, bufsize, length, name);
 }
 
-inline std::string GL::getActiveSubroutineName(unsigned int program, ShaderStage shadertype, unsigned int index)
+inline std::string GL::getActiveSubroutineName(unsigned int program, GL_ENUM shadertype, unsigned int index)
 {
 	std::string temp = std::string(1024, ' ');
 	int length;
@@ -114,24 +114,24 @@ inline std::string GL::getActiveSubroutineName(unsigned int program, ShaderStage
 	return temp.substr(0, length);
 }
 
-inline void GL::getActiveSubroutineUniformiv(unsigned int program, ShaderStageNoCompute shadertype, unsigned int index, ShaderActiveSubroutineParameter pname, int* values)
+inline void GL::getActiveSubroutineUniformiv(unsigned int program, GL_ENUM shadertype, unsigned int index, GL_ENUM pname, int* values)
 {
 	glGetActiveSubroutineUniformiv(program, static_cast <unsigned int>(shadertype), index, static_cast<unsigned int>(pname), values);
 }
 
-inline int GL::getActiveSubroutineUniformiv(unsigned int program, ShaderStageNoCompute shadertype, unsigned int index, ShaderActiveSubroutineParameteri pname)
+inline int GL::getActiveSubroutineUniformiv(unsigned int program, GL_ENUM shadertype, unsigned int index, GL_ENUM pname)
 {
 	int temp;
-	getActiveSubroutineUniformiv(program, shadertype, index, static_cast<ShaderActiveSubroutineParameter>(pname), &temp);
+	getActiveSubroutineUniformiv(program, shadertype, index, pname, &temp);
 	return temp;
 }
 
-inline void GL::getActiveSubroutineUniformName(unsigned int program, ShaderStageNoCompute shadertype, unsigned int index, int bufsize, int* length, char* name)
+inline void GL::getActiveSubroutineUniformName(unsigned int program, GL_ENUM shadertype, unsigned int index, int bufsize, int* length, char* name)
 {
 	glGetActiveSubroutineUniformName(program, static_cast<unsigned int>(shadertype), index, bufsize, length, name);
 }
 
-inline std::string GL::getActiveSubroutineUniformName(unsigned int program, ShaderStageNoCompute shadertype, unsigned int index)
+inline std::string GL::getActiveSubroutineUniformName(unsigned int program, GL_ENUM shadertype, unsigned int index)
 {
 	std::string temp = std::string(1024, ' ');
 	
@@ -141,14 +141,14 @@ inline std::string GL::getActiveSubroutineUniformName(unsigned int program, Shad
 }
 #endif
 
-inline void GL::getActiveUniform(unsigned int program, unsigned int index, int bufSize, int* length, int* size, ShaderUniformTypes* type, char* name)
+inline void GL::getActiveUniform(unsigned int program, unsigned int index, int bufSize, int* length, int* size, GL_ENUM * type, char* name)
 {
 	glGetActiveUniform(program, index, bufSize, length, size, reinterpret_cast<unsigned int*>(type), name);
 }
 
-inline std::tuple<int, GL::ShaderUniformTypes, std::string> GL::getActiveUniform(unsigned int program, unsigned int index)
+inline std::tuple<int, GL::GL_ENUM, std::string> GL::getActiveUniform(unsigned int program, unsigned int index)
 {
-	std::tuple<int, ShaderUniformTypes, std::string> temp = std::make_tuple(0, ShaderUniformTypes::FLOAT, std::string(getProgramiv(program, ProgramGetParameteri::ACTIVE_UNIFORM_MAX_LENGTH), ' '));
+	std::tuple<int, GL_ENUM, std::string> temp = std::make_tuple(0, FLOAT, std::string(getProgramiv(program, ACTIVE_UNIFORM_MAX_LENGTH), ' '));
 	int length;
 	getActiveUniform(program, index, static_cast<int>(std::get<2>(temp).size()), &length, &std::get<0>(temp), &std::get<1>(temp), &std::get<2>(temp).front());
 	std::get<2>(temp) = std::get<2>(temp).substr(0, length);
@@ -156,15 +156,15 @@ inline std::tuple<int, GL::ShaderUniformTypes, std::string> GL::getActiveUniform
 }
 
 #if GL_DESKTOP || EC(3, 0)
-inline void GL::getActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, ShaderUniformBlockParameter pname, int* params)
+inline void GL::getActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, GL_ENUM pname, int* params)
 {
 	glGetActiveUniformBlockiv(program, uniformBlockIndex, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, ShaderUniformBlockParameteri pname)
+inline int GL::getActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, GL_ENUM pname)
 {
 	int temp;
-	getActiveUniformBlockiv(program, uniformBlockIndex, static_cast<ShaderUniformBlockParameter>(pname), &temp);
+	getActiveUniformBlockiv(program, uniformBlockIndex, pname, &temp);
 	return temp;
 }
 
@@ -192,7 +192,7 @@ inline void GL::getActiveUniformName(unsigned int program, unsigned int uniformI
 
 inline std::string GL::getActiveUniformName(unsigned int program, unsigned int uniformIndex)
 {
-	std::string temp = std::string(getProgramiv(program, ProgramGetParameteri::ACTIVE_UNIFORM_MAX_LENGTH), ' ');
+	std::string temp = std::string(getProgramiv(program, ACTIVE_UNIFORM_MAX_LENGTH), ' ');
 	int length;
 
 	glGetActiveUniformName(program, uniformIndex, static_cast<int>(temp.size()), &length, &temp.front());
@@ -201,7 +201,7 @@ inline std::string GL::getActiveUniformName(unsigned int program, unsigned int u
 }
 #endif
 
-inline void GL::getActiveUniformsiv(unsigned int program, int uniformCount, const unsigned int* uniformIndices, ShaderUniformsivParameter pname, int* params)
+inline void GL::getActiveUniformsiv(unsigned int program, int uniformCount, const unsigned int* uniformIndices, GL_ENUM pname, int* params)
 {
 	glGetActiveUniformsiv(program, uniformCount, uniformIndices, static_cast<unsigned int>(pname), params);
 }
@@ -213,7 +213,7 @@ inline void GL::getAttachedShaders(unsigned int program, int maxCount, int* coun
 
 inline std::vector<unsigned int> GL::getAttachedShaders(unsigned int program)
 {
-	std::vector<unsigned int> temp = std::vector<unsigned int>(getProgramiv(program, ProgramGetParameteri::ATTACHED_SHADERS), 0);
+	std::vector<unsigned int> temp = std::vector<unsigned int>(getProgramiv(program, ATTACHED_SHADERS), 0);
 
 	getAttachedShaders(program, static_cast<int>(temp.size()), nullptr, &temp.front());
 
@@ -239,15 +239,15 @@ inline int GL::getFragDataLocation(unsigned int program, std::string_view name)
 }
 #endif
 
-inline void GL::getProgramiv(unsigned int program, ProgramGetParameter pname, int* params)
+inline void GL::getProgramiv(unsigned int program, GL_ENUM pname, int* params)
 {
 	glGetProgramiv(program, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getProgramiv(unsigned int program, ProgramGetParameteri pname)
+inline int GL::getProgramiv(unsigned int program, GL_ENUM pname)
 {
 	int temp;
-	getProgramiv(program, static_cast<ProgramGetParameter>(pname), &temp);
+	getProgramiv(program, pname, &temp);
 	return temp;
 }
 
@@ -265,7 +265,7 @@ inline void GL::getProgramInfoLog(unsigned int program, int maxLength, int* leng
 
 inline std::string GL::getProgramInfoLog(unsigned int program)
 {
-	std::string temp = std::string(getProgramiv(program, ProgramGetParameteri::INFO_LOG_LENGTH), ' ');
+	std::string temp = std::string(getProgramiv(program, GL_ENUM ::INFO_LOG_LENGTH), ' ');
 	int length;
 
 	getProgramInfoLog(program, static_cast<int>(temp.size()), &length, &temp.front());
@@ -274,28 +274,28 @@ inline std::string GL::getProgramInfoLog(unsigned int program)
 }
 
 #if VC(4, 3) || EC(3, 1)
-inline void GL::getProgramResourceiv(unsigned int program, ProgramResourceParameter programInterface, unsigned int index, int propCount, ProgramResourceParameter* props, int bufSize, int* length, int* params)
+inline void GL::getProgramResourceiv(unsigned int program, GL_ENUM programInterface, unsigned int index, int propCount, GL_ENUM * props, int bufSize, int* length, int* params)
 {
 	glGetProgramResourceiv(program, static_cast<unsigned int>(programInterface), index, propCount, reinterpret_cast<unsigned int*>(props), bufSize, length, params);
 }
 
-inline std::vector<int> GL::getProgramResourceiv(unsigned int program, ProgramResourceParameter programInterface, unsigned int index, const std::vector<ProgramResourceParameter>& props)
+inline std::vector<int> GL::getProgramResourceiv(unsigned int program, GL_ENUM programInterface, unsigned int index, const std::vector<GL_ENUM >& props)
 {
 	std::vector<int> temp(props.size(), 0);
 
-	getProgramResourceiv(program, programInterface, index, static_cast<int>(props.size()), const_cast<ProgramResourceParameter*>(&props.front()), static_cast<int>(props.size()), nullptr, &temp.front());
+	getProgramResourceiv(program, programInterface, index, static_cast<int>(props.size()), const_cast<GL_ENUM*>(&props.front()), static_cast<int>(props.size()), nullptr, &temp.front());
 
 	return temp;
 }
 #endif
 
 #if VC(4, 3) || EC(3, 1)
-inline unsigned int GL::getProgramResourceIndex(unsigned int program, ProgramResourceIndexInterfaceParameter programInterface, std::string_view name)
+inline unsigned int GL::getProgramResourceIndex(unsigned int program, GL_ENUM programInterface, std::string_view name)
 {
 	return glGetProgramResourceIndex(program, static_cast<unsigned int>(programInterface), name.data());
 }
 
-inline int GL::getProgramResourceLocation(unsigned int program, ProgramResourceLocationParameter programInterface, std::string_view name)
+inline int GL::getProgramResourceLocation(unsigned int program, GL_ENUM programInterface, std::string_view name)
 {
 	return glGetProgramResourceLocation(program, static_cast<unsigned int>(programInterface), name.data());
 }
@@ -309,12 +309,12 @@ inline int GL::getProgramResourceLocationIndex(unsigned int program, std::string
 #endif
 
 #if VC(4, 3) || EC(3, 1)
-inline void GL::getProgramResourceName(unsigned int program, ProgramResourceIndexInterfaceParameter programInterface, unsigned int index, int bufSize, int* length, char* name)
+inline void GL::getProgramResourceName(unsigned int program, GL_ENUM programInterface, unsigned int index, int bufSize, int* length, char* name)
 {
 	return glGetProgramResourceName(program, static_cast<unsigned int>(programInterface), index, bufSize, length, name);
 }
 
-inline std::string GL::getProgramResourceName(unsigned int program, ProgramResourceIndexInterfaceParameter programInterface, unsigned int index)
+inline std::string GL::getProgramResourceName(unsigned int program, GL_ENUM programInterface, unsigned int index)
 {
 	std::string temp = std::string(1024, ' ');
 	int length;
@@ -326,12 +326,12 @@ inline std::string GL::getProgramResourceName(unsigned int program, ProgramResou
 #endif
 
 #if VC(4, 0)
-inline void GL::getProgramStageiv(unsigned int program, ShaderStageNoCompute shadertype, ProgramStageParameter pname, int* values)
+inline void GL::getProgramStageiv(unsigned int program, GL_ENUM shadertype, GL_ENUM pname, int* values)
 {
 	glGetProgramStageiv(program, static_cast<unsigned int>(shadertype), static_cast<unsigned int>(pname), values);
 }
 
-inline int GL::getProgramStageiv(unsigned int program, ShaderStageNoCompute shadertype, ProgramStageParameter pname)
+inline int GL::getProgramStageiv(unsigned int program, GL_ENUM shadertype, GL_ENUM pname)
 {
 	int temp;
 	getProgramStageiv(program, shadertype, pname, &temp);
@@ -339,12 +339,12 @@ inline int GL::getProgramStageiv(unsigned int program, ShaderStageNoCompute shad
 }
 #endif
 
-inline void GL::getShaderiv(unsigned int shader, ShaderParameter pname, int* params)
+inline void GL::getShaderiv(unsigned int shader, GL_ENUM pname, int* params)
 {
 	glGetShaderiv(shader, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getShaderiv(unsigned int shader, ShaderParameter pname)
+inline int GL::getShaderiv(unsigned int shader, GL_ENUM pname)
 {
 	int temp;
 	getShaderiv(shader, pname, &temp);
@@ -358,7 +358,7 @@ inline void GL::getShaderInfoLog(unsigned int shader, int maxLength, int* length
 
 inline std::string GL::getShaderInfoLog(unsigned int shader)
 {
-	std::string temp = std::string(getShaderiv(shader, ShaderParameter::INFO_LOG_LENGTH), ' ');
+	std::string temp = std::string(getShaderiv(shader, GL_ENUM ::INFO_LOG_LENGTH), ' ');
 	int length;
 
 	getShaderInfoLog(shader, static_cast<int>(temp.size()), &length, &temp.front());
@@ -366,12 +366,12 @@ inline std::string GL::getShaderInfoLog(unsigned int shader)
 	return temp.substr(0, length);
 }
 
-inline void GL::getShaderPrecisionFormat(ShaderBasicStage shaderType, ShaderPrecision precisionType, int* range, int* precision)
+inline void GL::getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType, int* range, int* precision)
 {
 	glGetShaderPrecisionFormat(static_cast<unsigned int>(shaderType), static_cast<unsigned int>(precisionType), range, precision);
 }
 
-inline std::pair<glm::ivec2, int> GL::getShaderPrecisionFormat(ShaderBasicStage shaderType, ShaderPrecision precisionType)
+inline std::pair<glm::ivec2, int> GL::getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType)
 {
 	std::pair<glm::ivec2, int> temp;
 	getShaderPrecisionFormat(shaderType, precisionType, &temp.first.x, &temp.second);
@@ -385,7 +385,7 @@ inline void GL::getShaderSource(unsigned int shader, int bufSize, int* length, c
 
 inline std::string GL::getShaderSource(unsigned int shader)
 {
-	std::string temp = std::string(getShaderiv(shader, ShaderParameter::SHADER_SOURCE_LENGTH), ' ');
+	std::string temp = std::string(getShaderiv(shader, SHADER_SOURCE_LENGTH), ' ');
 	int length;
 
 	getShaderSource(shader, static_cast<int>(temp.size()), &length, &temp.front());
@@ -394,12 +394,12 @@ inline std::string GL::getShaderSource(unsigned int shader)
 }
 
 #if VC(4, 0)
-inline int GL::getSubroutineIndex(unsigned int program, ShaderStageNoCompute shadertype, std::string_view name)
+inline int GL::getSubroutineIndex(unsigned int program, GL_ENUM shadertype, std::string_view name)
 {
 	return glGetSubroutineIndex(program, static_cast<unsigned int>(shadertype), &name.front());
 }
 
-inline int GL::getSubroutineUniformLocation(unsigned int program, ShaderStageNoCompute shadertype, std::string_view name)
+inline int GL::getSubroutineUniformLocation(unsigned int program, GL_ENUM shadertype, std::string_view name)
 {
 	return glGetSubroutineUniformLocation(program, static_cast<unsigned int>(shadertype), &name.front());
 }
@@ -595,7 +595,7 @@ inline int GL::getUniformLocation(unsigned int program, std::string_view name)
 }
 
 #if VC(4, 0)
-inline void GL::getUniformSubroutineuiv(ShaderStageNoCompute shadertype, int location, unsigned int* values)
+inline void GL::getUniformSubroutineuiv(GL_ENUM shadertype, int location, unsigned int* values)
 {
 	glGetUniformSubroutineuiv(static_cast<unsigned int>(shadertype), location, values);
 }
@@ -631,7 +631,7 @@ inline void GL::programBinary(unsigned int program, unsigned int binaryFormat, c
 #endif
 
 #if VC(4, 1) || EC(3, 0)
-inline void GL::programParameteri(unsigned int program, ProgramParameter pname, int value)
+inline void GL::programParameteri(unsigned int program, GL_ENUM pname, int value)
 {
 	glProgramParameteri(program, static_cast<unsigned int>(pname), value);
 }
@@ -1292,12 +1292,12 @@ inline void GL::uniformBlockBinding(unsigned int program, unsigned int uniformBl
 #endif
 
 #if VC(4, 0)
-inline void GL::uniformSubroutinesuiv(ShaderStageNoCompute shadertype, int count, const unsigned int* indices)
+inline void GL::uniformSubroutinesuiv(GL_ENUM shadertype, int count, const unsigned int* indices)
 {
 	glUniformSubroutinesuiv(static_cast<unsigned int>(shadertype), count, indices);
 }
 
-inline void GL::uniformSubroutinesuiv(ShaderStageNoCompute shadertype, const std::vector<unsigned int>& indices)
+inline void GL::uniformSubroutinesuiv(GL_ENUM shadertype, const std::vector<unsigned int>& indices)
 {
 	uniformSubroutinesuiv(shadertype, static_cast<int>(indices.size()), indices.data());
 }

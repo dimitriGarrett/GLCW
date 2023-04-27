@@ -2,12 +2,12 @@
 #include "GL.h"
 
 #if VC(4, 3) || EC(3, 1)
-	inline void GL::getProgramInterfaceiv(unsigned int program, DebugInterfaces programInterface, DebugPnames pname, int* params)
+	inline void GL::getProgramInterfaceiv(unsigned int program, GL_ENUM programInterface, GL_ENUM pname, int* params)
 	{
 		glGetProgramInterfaceiv(program, static_cast<unsigned int>(programInterface), static_cast<unsigned int>(pname), params);
 	}
 
-	inline int GL::getProgramInterfaceiv(unsigned int program, DebugInterfaces programInterface, DebugPnames pname)
+	inline int GL::getProgramInterfaceiv(unsigned int program, GL_ENUM programInterface, GL_ENUM pname)
 	{
 		int temp;
 		getProgramInterfaceiv(program, programInterface, pname, &temp);
@@ -35,32 +35,32 @@
 		glDebugMessageCallback(callback, userParam);
 	}
 
-	inline void GL::debugMessageControl(DebugMessageControl control, DebugMessageType type, DebugMessageSeverity severity, int count, const unsigned int* ids, bool enabled)
+	inline void GL::debugMessageControl(GL_ENUM control, GL_ENUM type, GL_ENUM severity, int count, const unsigned int* ids, bool enabled)
 	{
 		glDebugMessageControl(static_cast<unsigned int>(control), static_cast<unsigned int>(type), static_cast<unsigned int>(severity), count, ids, static_cast<unsigned char>(enabled));
 	}
 
-	inline void GL::debugMessageInsert(DebugMessageSource source, DebugMessageType type, unsigned int id, DebugMessageSeverity severity, int length, const char* message)
+	inline void GL::debugMessageInsert(GL_ENUM source, GL_ENUM type, unsigned int id, GL_ENUM severity, int length, const char* message)
 	{
 		glDebugMessageInsert(static_cast<unsigned int>(source), static_cast<unsigned int>(type), id, static_cast<unsigned int>(severity), length, message);
 	}
 
-	inline void GL::debugMessageInsert(DebugMessageSource source, DebugMessageType type, unsigned int id, DebugMessageSeverity severity, std::string_view message)
+	inline void GL::debugMessageInsert(GL_ENUM source, GL_ENUM type, unsigned int id, GL_ENUM severity, std::string_view message)
 	{
 		debugMessageInsert(source, type, id, severity, static_cast<int>(message.size()), message.data());
 	}
 
-	inline unsigned int GL::getDebugMessageLog(unsigned int count, int bufSize, const std::vector<DebugMessageSource>& sources, const std::vector<DebugMessageType>& types, unsigned int* ids, const std::vector<DebugMessageSeverity>& severities, int* lengths, char* messageLog)
+	inline unsigned int GL::getDebugMessageLog(unsigned int count, int bufSize, const std::vector<GL_ENUM >& sources, const std::vector<GL_ENUM >& types, unsigned int* ids, const std::vector<GL_ENUM >& severities, int* lengths, char* messageLog)
 	{
 		return glGetDebugMessageLog(count, bufSize, (unsigned int*)(&sources.front()), (unsigned int*)(&types.front()), ids, (unsigned int*)(&severities.front()), lengths, messageLog);
 	}
 
-	inline void GL::getObjectLabel(DebugObjectLabels identifier, unsigned int name, int bufSize, int* length, char* label)
+	inline void GL::getObjectLabel(GL_ENUM identifier, unsigned int name, int bufSize, int* length, char* label)
 	{
 		glGetObjectLabel(static_cast<unsigned int>(identifier), name, bufSize, length, label);
 	}
 
-	inline std::string GL::getObjectLabel(DebugObjectLabels identifier, unsigned int name)
+	inline std::string GL::getObjectLabel(GL_ENUM identifier, unsigned int name)
 	{
 		/*int length = 0;
 		int bufSize = 512;
@@ -77,7 +77,7 @@
 		return view.substr(0, length);*/
 
 		int length = 0;
-		std::string view(getIntegerv(StateGets::MAX_DEBUG_MESSAGE_LENGTH), 'x');
+		std::string view(getIntegerv(MAX_DEBUG_MESSAGE_LENGTH), 'x');
 		getObjectLabel(identifier, name, static_cast<int>(view.size()), &length, &view.front());
 		return view.substr(0, length);
 	}
@@ -90,29 +90,29 @@
 	inline std::string GL::getObjectPtrLabel(void* ptr)
 	{
 		int length = 0;
-		std::string view(getIntegerv(StateGets::MAX_DEBUG_MESSAGE_LENGTH), 'x');
+		std::string view(getIntegerv(MAX_DEBUG_MESSAGE_LENGTH), 'x');
 		getObjectPtrLabel(ptr, view.size(), &length, view.data());
 		return view.substr(0, length);
 	}
 
-	inline void GL::getPointerv(DebugPtrs pname, void** params)
+	inline void GL::getPointerv(GL_ENUM pname, void** params)
 	{
 		glGetPointerv(static_cast<unsigned int>(pname), params);
 	}
 
-	inline void* GL::getPointerv(DebugPtrs pname)
+	inline void* GL::getPointerv(GL_ENUM pname)
 	{
 		void* temp;
 		getPointerv(pname, &temp);
 		return temp;
 	}
 
-	inline void GL::objectLabel(DebugObjectLabels identifier, unsigned int name, int length, const char* label)
+	inline void GL::objectLabel(GL_ENUM identifier, unsigned int name, int length, const char* label)
 	{
 		glObjectLabel(static_cast<unsigned int>(identifier), name, length, label);
 	}
 
-	inline void GL::objectLabel(DebugObjectLabels identifier, unsigned int name, std::string_view label)
+	inline void GL::objectLabel(GL_ENUM identifier, unsigned int name, std::string_view label)
 	{
 		glObjectLabel(static_cast<unsigned int>(identifier), name, static_cast<int>(label.size()), label.data());
 	}
@@ -132,12 +132,12 @@
 		glPopDebugGroup();
 	}
 
-	inline void GL::pushDebugGroup(DebugMessageSource source, unsigned int id, int length, const char* message)
+	inline void GL::pushDebugGroup(GL_ENUM source, unsigned int id, int length, const char* message)
 	{
 		glPushDebugGroup(static_cast<unsigned int>(source), id, length, message);
 	}
 
-	inline void GL::pushDebugGroup(DebugMessageSource source, unsigned int id, std::string_view message)
+	inline void GL::pushDebugGroup(GL_ENUM source, unsigned int id, std::string_view message)
 	{
 		glPushDebugGroup(static_cast<unsigned int>(source), id, static_cast<int>(message.size()), &message.front());
 	}

@@ -37,24 +37,24 @@ inline void GL::genSamplers(int n, unsigned int* samplers)
 	glGenSamplers(n, samplers);
 }
 
-inline void GL::getSamplerParameterfv(unsigned sampler, SamplerParameter pname, float* params)
+inline void GL::getSamplerParameterfv(unsigned sampler, GL_ENUM pname, float* params)
 {
 	glGetSamplerParameterfv(sampler, static_cast<unsigned int>(pname), params);
 }
 
-inline float GL::getSamplerParameterfv(unsigned sampler, SamplerParameter pname)
+inline float GL::getSamplerParameterfv(unsigned sampler, GL_ENUM pname)
 {
 	float temp;
 	getSamplerParameterfv(sampler, pname, &temp);
 	return temp;
 }
 
-inline void GL::getSamplerParameteriv(unsigned sampler, SamplerParameter pname, int* params)
+inline void GL::getSamplerParameteriv(unsigned sampler, GL_ENUM pname, int* params)
 {
 	glGetSamplerParameteriv(sampler, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getSamplerParameteriv(unsigned sampler, SamplerParameter pname)
+inline int GL::getSamplerParameteriv(unsigned sampler, GL_ENUM pname)
 {
 	int temp;
 	getSamplerParameteriv(sampler, pname, &temp);
@@ -62,24 +62,24 @@ inline int GL::getSamplerParameteriv(unsigned sampler, SamplerParameter pname)
 }
 
 #if GL_DESKTOP
-inline void GL::getSamplerParameterIiv(unsigned sampler, SamplerParameter pname, int* params)
+inline void GL::getSamplerParameterIiv(unsigned sampler, GL_ENUM pname, int* params)
 {
 	glGetSamplerParameterIiv(sampler, static_cast<unsigned int>(pname), params);
 }
 
-inline int GL::getSamplerParameterIiv(unsigned sampler, SamplerParameter pname)
+inline int GL::getSamplerParameterIiv(unsigned sampler, GL_ENUM pname)
 {
 	int temp;
 	getSamplerParameterIiv(sampler, pname, &temp);
 	return temp;
 }
 
-inline void GL::getSamplerParameterIuiv(unsigned sampler, SamplerParameter pname, unsigned int* params)
+inline void GL::getSamplerParameterIuiv(unsigned sampler, GL_ENUM pname, unsigned int* params)
 {
 	glGetSamplerParameterIuiv(sampler, static_cast<unsigned int>(pname), params);
 }
 
-inline unsigned int GL::getSamplerParameterIuiv(unsigned sampler, SamplerParameter pname)
+inline unsigned int GL::getSamplerParameterIuiv(unsigned sampler, GL_ENUM pname)
 {
 	unsigned int temp;
 	getSamplerParameterIuiv(sampler, pname, &temp);
@@ -92,33 +92,33 @@ inline bool GL::isSampler(unsigned int id)
 	return static_cast<bool>(glIsSampler(id));
 }
 
-inline void GL::samplerParameterf(unsigned sampler, SamplerParameter pname, float param)
+inline void GL::samplerParameterf(unsigned sampler, GL_ENUM pname, float param)
 {
 	glSamplerParameterf(sampler, static_cast<unsigned int>(pname), param);
 }
 
-inline void GL::samplerParameteri(unsigned sampler, SamplerParameter pname, int param)
+inline void GL::samplerParameteri(unsigned sampler, GL_ENUM pname, int param)
 {
 	glSamplerParameteri(sampler, static_cast<unsigned int>(pname), param);
 }
 
-inline void GL::samplerParameterfv(unsigned sampler, SamplerParameter pname, const float* param)
+inline void GL::samplerParameterfv(unsigned sampler, GL_ENUM pname, const float* param)
 {
 	glSamplerParameterfv(sampler, static_cast<unsigned int>(pname), param);
 }
 
-inline void GL::samplerParameteriv(unsigned sampler, SamplerParameter pname, const int* param)
+inline void GL::samplerParameteriv(unsigned sampler, GL_ENUM pname, const int* param)
 {
 	glSamplerParameteriv(sampler, static_cast<unsigned int>(pname), param);
 }
 
 #if GL_DESKTOP
-inline void GL::samplerParameterIiv(unsigned sampler, SamplerParameter pname, const int* param)
+inline void GL::samplerParameterIiv(unsigned sampler, GL_ENUM pname, const int* param)
 {
 	glSamplerParameterIiv(sampler, static_cast<unsigned int>(pname), param);
 }
 
-inline void GL::samplerParameterIuiv(unsigned sampler, SamplerParameter pname, const unsigned int* param)
+inline void GL::samplerParameterIuiv(unsigned sampler, GL_ENUM pname, const unsigned int* param)
 {
 	glSamplerParameterIuiv(sampler, static_cast<unsigned int>(pname), param);
 }

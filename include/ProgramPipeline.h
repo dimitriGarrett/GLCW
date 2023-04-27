@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Config.h"
+#include "Enums.h"
 
 #if VC(4, 1) || EC(3, 1)
 	#include "API.h"
@@ -8,23 +8,6 @@
 
 	namespace GL
 	{
-		enum class ProgramPipelineGets : unsigned int
-		{
-			ACTIVE_PROGRAM = 0x8259,
-			VERTEX_SHADER = 0x8B31,
-			FRAGMENT_SHADER = 0x8B30,
-			INFO_LOG_LENGTH = 0x8B84,
-			
-#if GL_DESKTOP
-			TESS_CONTROL_SHADER = 0x8E88,
-			TESS_EVALUATION_SHADER = 0x8E87,
-			GEOMETRY_SHADER = 0x8DD9,
-#else
-			COMPUTE_SHADER = 0x91B9,
-			VALIDATE_STATUS = 0x8B83
-#endif
-		};
-		
 		//glActiveShaderProgram — set the active program object for a program pipeline object
 		GLCW_API void activeShaderProgram(unsigned int pipeline, unsigned int program);
 
@@ -43,9 +26,9 @@
 		GLCW_API void genProgramPipelines(int n, unsigned int* pipelines);
 
 		//glGetProgramPipeline — retrieve properties of a program pipeline object
-		GLCW_API void getProgramPipelineiv(unsigned int pipeline, ProgramPipelineGets pname, int* params);
+		GLCW_API void getProgramPipelineiv(unsigned int pipeline, GL_ENUM pname, int* params);
 		//glGetProgramPipeline — retrieve properties of a program pipeline object
-		GLCW_API int getProgramPipelineiv(unsigned int pipeline, ProgramPipelineGets pname);
+		GLCW_API int getProgramPipelineiv(unsigned int pipeline, GL_ENUM pname);
 
 		//glGetProgramPipelineInfoLog — retrieve the info log string from a program pipeline object
 		GLCW_API void getProgramPipelineInfoLog(unsigned int pipeline, int bufSize, int* length, char* infoLog);
