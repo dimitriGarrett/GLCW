@@ -25,7 +25,7 @@ int main()
 
     unsigned int texture;
     GL::genTextures(1, &texture);
-    GL::bindTexture(GL::TextureTarget::TEXTURE_2D, texture);
+    GL::bindTexture(GL::TEXTURE_2D, texture);
 
     //use the texture...
 
