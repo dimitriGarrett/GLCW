@@ -1,5 +1,8 @@
 # GLCW
 
+# Important
+This version of GLCW enforces only certain values in the enums! Use this only if it is strictly necessary, as it adds much more typing and is much more annoying to convert old GL code to...
+
 # Forewarning
 GLCW is only an OpenGL wrapper! That means that this does not have a windowing library! (if you need one, GLW might suit your needs)
 
