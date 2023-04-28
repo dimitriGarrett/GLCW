@@ -18,7 +18,7 @@ namespace GL
 		GLCW_API void clear(unsigned int bitfield);
 	}
 
-	static constexpr const char* COLOR_BUFFER_FILE = __FILE__;
+	inline constexpr const char* COLOR_BUFFER_FILE = __FILE__;
 
 	//glClear — clear buffers to preset values
 	template <unsigned int final_bits>

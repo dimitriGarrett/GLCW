@@ -4,7 +4,7 @@
 
 namespace GL
 {
-	template <unsigned int id, unsigned int v>
+	template <cti::hash_t id, unsigned int v>
 	struct BitfieldWrapper
 	{
 		constexpr static unsigned int value = v;

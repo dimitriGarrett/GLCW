@@ -359,15 +359,15 @@ namespace GL
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
 	GLCW_API void vertexAttrib1f(unsigned int index, float v0);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
-	GLCW_API void vertexAttrib2f(unsigned int index, int v0, int v1);
+	GLCW_API void vertexAttrib2f(unsigned int index, float v0, float v1);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
 	GLCW_API void vertexAttrib2f(unsigned int index, const glm::vec2& v);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
-	GLCW_API void vertexAttrib3f(unsigned int index, int v0, int v1, int v2);
+	GLCW_API void vertexAttrib3f(unsigned int index, float v0, float v1, float v2);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
 	GLCW_API void vertexAttrib3f(unsigned int index, const glm::vec3& v);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
-	GLCW_API void vertexAttrib4f(unsigned int index, int v0, int v1, int v2, int v3);
+	GLCW_API void vertexAttrib4f(unsigned int index, float v0, float v1, float v2, float v3);
 	//glVertexAttrib — Specifies the value of a generic vertex attribute
 	GLCW_API void vertexAttrib4f(unsigned int index, const glm::vec4& v);
 
