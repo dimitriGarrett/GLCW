@@ -1,7 +1,6 @@
 #pragma once
 
 #include "API.h"
-#include "GLM.h"
 #include "Enums.h"
 
 #include <vector>
@@ -11,7 +10,7 @@ namespace GL
 	//glBlendColor — set the blend color
 	GLCW_API void blendColor(float r, float g, float b, float a);
 	//glBlendColor — set the blend color
-	GLCW_API void blendColor(const glm::vec4& rgba);
+	GLCW_API void blendColor(const fvec4& rgba);
 
 	//glBlendEquation — specify the equation used for both the RGB blend equation and the Alpha blend equation
 	GLCW_API void blendEquation(GL_ENUM eq);
@@ -58,13 +57,13 @@ namespace GL
 	//glColorMask, glColorMaski — enable and disable writing of frame buffer color components
 	GLCW_API void colorMask(bool red, bool green, bool blue, bool alpha);
 	//glColorMask, glColorMaski — enable and disable writing of frame buffer color components
-	GLCW_API void colorMask(const glm::bvec4& rgba);
+	GLCW_API void colorMask(const bvec4& rgba);
 
 #if GL_DESKTOP
 	//glColorMask, glColorMaski — enable and disable writing of frame buffer color components
 	GLCW_API void colorMaski(unsigned int drawBuffer, bool red, bool green, bool blue, bool alpha);
 	//glColorMask, glColorMaski — enable and disable writing of frame buffer color components
-	GLCW_API void colorMaski(unsigned int drawBuffer, const glm::bvec4& rgba);
+	GLCW_API void colorMaski(unsigned int drawBuffer, const bvec4& rgba);
 #endif
 
 	//glCullFace — specify whether front- or back-facing facets can be culled
@@ -80,14 +79,14 @@ namespace GL
 	//glDepthRange — specify mapping of depth values from normalized device coordinates to window coordinates
 	GLCW_API void depthRange(double near, double far);
 	//glDepthRange — specify mapping of depth values from normalized device coordinates to window coordinates
-	GLCW_API void depthRange(const glm::dvec2& nearAndFar);
+	GLCW_API void depthRange(const dvec2& nearAndFar);
 #endif
 
 #if VC(4, 1) || (!GL_DESKTOP)
 	//glDepthRange — specify mapping of depth values from normalized device coordinates to window coordinates
 	GLCW_API void depthRangef(float near, float far);
 	//glDepthRange — specify mapping of depth values from normalized device coordinates to window coordinates
-	GLCW_API void depthRangef(const glm::fvec2& nearAndFar);
+	GLCW_API void depthRangef(const fvec2& nearAndFar);
 #endif
 
 #if VC(4, 1)
@@ -97,7 +96,7 @@ namespace GL
 	//glDepthRangeIndexed — specify mapping of depth values from normalized device coordinates to window coordinates for a specified viewport
 	GLCW_API void depthRangeIndexed(unsigned int index, double nearVal, double farVal);
 	//glDepthRangeIndexed — specify mapping of depth values from normalized device coordinates to window coordinates for a specified viewport
-	GLCW_API void depthRangeIndexed(unsigned int index, const glm::vec2& nearAndFar);
+	GLCW_API void depthRangeIndexed(unsigned int index, const dvec2& nearAndFar);
 #endif
 
 	//glEnable — enable or disable server-side GL capabilities
@@ -216,7 +215,7 @@ namespace GL
 	//glScissor — define the scissor box
 	GLCW_API void scissor(int x, int y, int width, int height);
 	//glScissor — define the scissor box
-	GLCW_API void scissor(const glm::ivec4& xYWidthHeight);
+	GLCW_API void scissor(const ivec4& xYWidthHeight);
 
 #if GL_DESKTOP
 	//glScissorArray — define the scissor box for multiple viewports
@@ -225,7 +224,7 @@ namespace GL
 	//glScissorIndexed — define the scissor box for a specific viewport
 	GLCW_API void scissorIndexed(unsigned int index, int left, int bottom, int width, int height);
 	//glScissorIndexed — define the scissor box for a specific viewport
-	GLCW_API void scissorIndexed(unsigned int index, const glm::ivec4& leftBottomWidthHeight);
+	GLCW_API void scissorIndexed(unsigned int index, const ivec4& leftBottomWidthHeight);
 	//glScissorIndexed — define the scissor box for a specific viewport
 	GLCW_API void scissorIndexedv(unsigned int index, const std::vector<int>& values);
 #endif
@@ -251,7 +250,7 @@ namespace GL
 	//glViewport — set the viewport
 	GLCW_API void viewport(int x, int y, int width, int height);
 	//glViewport — set the viewport
-	GLCW_API void viewport(const glm::ivec4& xYWidthHeight);
+	GLCW_API void viewport(const ivec4& xYWidthHeight);
 
 #if VC(4, 1)
 	//glViewportArray — set multiple viewports
@@ -260,7 +259,7 @@ namespace GL
 	//glViewportIndexed — set a specified viewport
 	GLCW_API void viewportIndexedf(unsigned int index, float x, float y, float width, float height);
 	//glViewportIndexed — set a specified viewport
-	GLCW_API void viewportIndexedf(unsigned int index, const glm::vec4& xYWidthHeight);
+	GLCW_API void viewportIndexedf(unsigned int index, const fvec4& xYWidthHeight);
 	//glViewportIndexed — set a specified viewport
 	GLCW_API void viewportIndexedfv(unsigned int index, const std::vector<float>& values);
 #endif

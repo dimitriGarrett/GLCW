@@ -1,7 +1,7 @@
 #pragma once
 
 #include "API.h"
-#include "GLM.h"
+#include "vec.h"
 
 #include "BitfieldWrapper.h"
 
@@ -52,9 +52,9 @@ namespace GL
 	//glClearColor — specify clear values for the color buffers
 	GLCW_API void clearColor(float red, float green, float blue, float alpha);
 	//glClearColor — specify clear values for the color buffers
-	GLCW_API inline void clearColor(const glm::vec4& rgba)
+	GLCW_API inline void clearColor(const fvec4& rgba)
 	{
-		clearColor(rgba.r, rgba.g, rgba.b, rgba.a);
+		clearColor(rgba.x, rgba.y, rgba.z, rgba.w);
 	}
 
 #if GL_DESKTOP

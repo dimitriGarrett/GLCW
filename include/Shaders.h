@@ -1,7 +1,6 @@
 #pragma once
 
 #include "API.h"
-#include "GLM.h"
 #include "Enums.h"
 
 #include <string_view>
@@ -202,7 +201,7 @@ namespace GL
 	//glGetShaderPrecisionFormat — retrieve the range and precision for numeric formats supported by the shader compiler
 	GLCW_API void getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType, int* range, int* precision);
 	//glGetShaderPrecisionFormat — retrieve the range and precision for numeric formats supported by the shader compiler
-	GLCW_API std::pair<glm::ivec2, int> getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType);
+	GLCW_API std::pair<ivec2, int> getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType);
 
 	//glGetShaderSource — Returns the source code string from a shader object
 	GLCW_API void getShaderSource(unsigned int shader, int bufSize, int* length, char* source);
@@ -222,42 +221,42 @@ namespace GL
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API float getSingleUniformfv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::vec2 getDoubleUniformfv(unsigned int program, int location);
+	GLCW_API fvec2 getDoubleUniformfv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::vec3 getTripleUniformfv(unsigned int program, int location);
+	GLCW_API fvec3 getTripleUniformfv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::vec4 getQuadUniformfv(unsigned int program, int location);
+	GLCW_API fvec4 getQuadUniformfv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API void getUniformiv(unsigned int program, int location, int* params);
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API int getSingleUniformiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::ivec2 getDoubleUniformiv(unsigned int program, int location);
+	GLCW_API ivec2 getDoubleUniformiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::ivec3 getTripleUniformiv(unsigned int program, int location);
+	GLCW_API ivec3 getTripleUniformiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::ivec4 getQuadUniformiv(unsigned int program, int location);
+	GLCW_API ivec4 getQuadUniformiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API void getUniformuiv(unsigned int program, int location, unsigned int* params);
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API unsigned int getSingleUniformuiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::uvec2 getDoubleUniformuiv(unsigned int program, int location);
+	GLCW_API uvec2 getDoubleUniformuiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::uvec3 getTripleUniformuiv(unsigned int program, int location);
+	GLCW_API uvec3 getTripleUniformuiv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::uvec4 getQuadUniformuiv(unsigned int program, int location);
+	GLCW_API uvec4 getQuadUniformuiv(unsigned int program, int location);
 #if VC(4, 0)
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API void getUniformdv(unsigned int program, int location, double* params);
 	//glGetUniform — Returns the value of a uniform variable
 	GLCW_API double getSingleUniformdv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::dvec2 getDoubleUniformdv(unsigned int program, int location);
+	GLCW_API dvec2 getDoubleUniformdv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::dvec3 getTripleUniformdv(unsigned int program, int location);
+	GLCW_API dvec3 getTripleUniformdv(unsigned int program, int location);
 	//glGetUniform — Returns the value of a uniform variable
-	GLCW_API glm::dvec4 getQuadUniformdv(unsigned int program, int location);
+	GLCW_API dvec4 getQuadUniformdv(unsigned int program, int location);
 #endif
 
 #if VC(4, 5)
@@ -320,49 +319,49 @@ namespace GL
 	{
 		if constexpr (std::is_same_v<T, float>)
 			programUniform1fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec2>)
+		if constexpr (std::is_same_v<T, fvec2>)
 			programUniform2fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec3>)
+		if constexpr (std::is_same_v<T, fvec3>)
 			programUniform3fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec4>)
+		if constexpr (std::is_same_v<T, fvec4>)
 			programUniform4fv(location, count, v);
 
 		if constexpr (std::is_same_v<T, int>)
 			programUniform1iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec2>)
+		if constexpr (std::is_same_v<T, ivec2>)
 			programUniform2iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec3>)
+		if constexpr (std::is_same_v<T, ivec3>)
 			programUniform3iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec4>)
+		if constexpr (std::is_same_v<T, ivec4>)
 			programUniform4iv(location, count, v);
 
 		if constexpr (std::is_same_v<T, unsigned int>)
 			programUniform1uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec2>)
+		if constexpr (std::is_same_v<T, uvec2>)
 			programUniform2uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec3>)
+		if constexpr (std::is_same_v<T, uvec3>)
 			programUniform3uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec4>)
+		if constexpr (std::is_same_v<T, uvec4>)
 			programUniform4uiv(location, count, v);
 
-		if constexpr (std::is_same_v<T, glm::mat2>)
+		if constexpr (std::is_same_v<T, mat2>)
 			programUniformMatrix2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3>)
+		if constexpr (std::is_same_v<T, mat3>)
 			programUniformMatrix3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4>)
+		if constexpr (std::is_same_v<T, mat4>)
 			programUniformMatrix4fv(location, count, transpose, v);
 
-		if constexpr (std::is_same_v<T, glm::mat2x3>)
+		if constexpr (std::is_same_v<T, mat2x3>)
 			programUniformMatrix2x3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3x2>)
+		if constexpr (std::is_same_v<T, mat3x2>)
 			programUniformMatrix3x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat2x4>)
+		if constexpr (std::is_same_v<T, mat2x4>)
 			programUniformMatrix2x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4x2>)
+		if constexpr (std::is_same_v<T, mat4x2>)
 			programUniformMatrix4x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3x4>)
+		if constexpr (std::is_same_v<T, mat3x4>)
 			programUniformMatrix3x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4x3>)
+		if constexpr (std::is_same_v<T, mat4x3>)
 			programUniformMatrix4x3fv(location, count, transpose, v);
 	}
 
@@ -371,121 +370,121 @@ namespace GL
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2f(unsigned int program, int location, float v0, float v1);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2f(unsigned int program, int location, const glm::vec2& v);
+	GLCW_API void programUniform2f(unsigned int program, int location, const fvec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3f(unsigned int program, int location, float v0, float v1, float v2);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3f(unsigned int program, int location, const glm::vec3& v);
+	GLCW_API void programUniform3f(unsigned int program, int location, const fvec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4f(unsigned int program, int location, float v0, float v1, float v2, float v3);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4f(unsigned int program, int location, const glm::vec4& v);
+	GLCW_API void programUniform4f(unsigned int program, int location, const fvec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1i(unsigned int program, int location, int v0);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2i(unsigned int program, int location, int v0, int v1);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2i(unsigned int program, int location, const glm::ivec2& v);
+	GLCW_API void programUniform2i(unsigned int program, int location, const ivec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3i(unsigned int program, int location, int v0, int v1, int v2);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3i(unsigned int program, int location, const glm::ivec3& v);
+	GLCW_API void programUniform3i(unsigned int program, int location, const ivec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4i(unsigned int program, int location, int v0, int v1, int v2, int v3);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4i(unsigned int program, int location, const glm::ivec4& v);
+	GLCW_API void programUniform4i(unsigned int program, int location, const ivec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1ui(unsigned int program, int location, unsigned int v0);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2ui(unsigned int program, int location, unsigned int v0, unsigned int v1);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2ui(unsigned int program, int location, const glm::uvec2& v);
+	GLCW_API void programUniform2ui(unsigned int program, int location, const uvec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3ui(unsigned int program, int location, unsigned int v0, unsigned int v1, unsigned int v2);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3ui(unsigned int program, int location, const glm::uvec3& v);
+	GLCW_API void programUniform3ui(unsigned int program, int location, const uvec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4ui(unsigned int program, int location, unsigned int v0, unsigned int v1, unsigned int v2, unsigned int v3);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4ui(unsigned int program, int location, const glm::uvec4& v);
+	GLCW_API void programUniform4ui(unsigned int program, int location, const uvec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1fv(unsigned int program, int location, int count, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2fv(unsigned int program, int location, int count, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2fv(unsigned int program, int location, int count, const glm::vec2& v);
+	GLCW_API void programUniform2fv(unsigned int program, int location, int count, const fvec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3fv(unsigned int program, int location, int count, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3fv(unsigned int program, int location, int count, const glm::vec3& v);
+	GLCW_API void programUniform3fv(unsigned int program, int location, int count, const fvec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4fv(unsigned int program, int location, int count, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4fv(unsigned int program, int location, int count, const glm::vec4& v);
+	GLCW_API void programUniform4fv(unsigned int program, int location, int count, const fvec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1iv(unsigned int program, int location, int count, const int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2iv(unsigned int program, int location, int count, const int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2iv(unsigned int program, int location, int count, const glm::ivec2& v);
+	GLCW_API void programUniform2iv(unsigned int program, int location, int count, const ivec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3iv(unsigned int program, int location, int count, const int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3iv(unsigned int program, int location, int count, const glm::ivec3& v);
+	GLCW_API void programUniform3iv(unsigned int program, int location, int count, const ivec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4iv(unsigned int program, int location, int count, const int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4iv(unsigned int program, int location, int count, const glm::ivec4& v);
+	GLCW_API void programUniform4iv(unsigned int program, int location, int count, const ivec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1uiv(unsigned int program, int location, int count, const unsigned int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2uiv(unsigned int program, int location, int count, const unsigned int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform2uiv(unsigned int program, int location, int count, const glm::uvec2& v);
+	GLCW_API void programUniform2uiv(unsigned int program, int location, int count, const uvec2& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform3uiv(unsigned int program, int location, int count, const unsigned int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform3uiv(unsigned int program, int location, int count, const glm::uvec3& v);
+	GLCW_API void programUniform3uiv(unsigned int program, int location, int count, const uvec3& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform4uiv(unsigned int program, int location, int count, const unsigned int* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniform4uiv(unsigned int program, int location, int count, const glm::uvec4& v);
+	GLCW_API void programUniform4uiv(unsigned int program, int location, int count, const uvec4& v);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix2fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix2fv(unsigned int program, int location, int count, bool transpose, const glm::mat2& value);
+	GLCW_API void programUniformMatrix2fv(unsigned int program, int location, int count, bool transpose, const mat2& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix3fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix3fv(unsigned int program, int location, int count, bool transpose, const glm::mat3& value);
+	GLCW_API void programUniformMatrix3fv(unsigned int program, int location, int count, bool transpose, const mat3& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix4fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix4fv(unsigned int program, int location, int count, bool transpose, const glm::mat4& value);
+	GLCW_API void programUniformMatrix4fv(unsigned int program, int location, int count, bool transpose, const mat4& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix2x3fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix2x3fv(unsigned int program, int location, int count, bool transpose, const glm::mat2x3& value);
+	GLCW_API void programUniformMatrix2x3fv(unsigned int program, int location, int count, bool transpose, const mat2x3& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix3x2fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix3x2fv(unsigned int program, int location, int count, bool transpose, const glm::mat3x2& value);
+	GLCW_API void programUniformMatrix3x2fv(unsigned int program, int location, int count, bool transpose, const mat3x2& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix2x4fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix2x4fv(unsigned int program, int location, int count, bool transpose, const glm::mat2x4& value);
+	GLCW_API void programUniformMatrix2x4fv(unsigned int program, int location, int count, bool transpose, const mat2x4& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix4x2fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix4x2fv(unsigned int program, int location, int count, bool transpose, const glm::mat4x2& value);
+	GLCW_API void programUniformMatrix4x2fv(unsigned int program, int location, int count, bool transpose, const mat4x2& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix3x4fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix3x4fv(unsigned int program, int location, int count, bool transpose, const glm::mat3x4& value);
+	GLCW_API void programUniformMatrix3x4fv(unsigned int program, int location, int count, bool transpose, const mat3x4& value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	GLCW_API void programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const glm::mat4x3& value);
+	GLCW_API void programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const mat4x3& value);
 #endif
 
 #if (!GL_DESKTOP) || VC(4, 1)
@@ -514,52 +513,52 @@ namespace GL
 	{
 		if constexpr (std::is_same_v<T, float>)
 			uniform1fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec2>)
+		if constexpr (std::is_same_v<T, uvec2>)
 			uniform2fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec3>)
+		if constexpr (std::is_same_v<T, uvec3>)
 			uniform3fv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::vec4>)
+		if constexpr (std::is_same_v<T, uvec4>)
 			uniform4fv(location, count, v);
 
 		if constexpr (std::is_same_v<T, int>)
 			uniform1iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec2>)
+		if constexpr (std::is_same_v<T, ivec2>)
 			uniform2iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec3>)
+		if constexpr (std::is_same_v<T, ivec3>)
 			uniform3iv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::ivec4>)
+		if constexpr (std::is_same_v<T, ivec4>)
 			uniform4iv(location, count, v);
 
 #if GL_DESKTOP || EC(3, 0)
 		if constexpr (std::is_same_v<T, unsigned int>)
 			uniform1uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec2>)
+		if constexpr (std::is_same_v<T, uvec2>)
 			uniform2uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec3>)
+		if constexpr (std::is_same_v<T, uvec3>)
 			uniform3uiv(location, count, v);
-		if constexpr (std::is_same_v<T, glm::uvec4>)
+		if constexpr (std::is_same_v<T, uvec4>)
 			uniform4uiv(location, count, v);
 #endif
 
-		if constexpr (std::is_same_v<T, glm::mat2>)
+		if constexpr (std::is_same_v<T, mat2>)
 			uniformMatrix2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3>)
+		if constexpr (std::is_same_v<T, mat3>)
 			uniformMatrix3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4>)
+		if constexpr (std::is_same_v<T, mat4>)
 			uniformMatrix4fv(location, count, transpose, v);
 
 #if GL_DESKTOP || EC(3, 0)
-		if constexpr (std::is_same_v<T, glm::mat2x3>)
+		if constexpr (std::is_same_v<T, mat2x3>)
 			uniformMatrix2x3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3x2>)
+		if constexpr (std::is_same_v<T, mat3x2>)
 			uniformMatrix3x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat2x4>)
+		if constexpr (std::is_same_v<T, mat2x4>)
 			uniformMatrix2x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4x2>)
+		if constexpr (std::is_same_v<T, mat4x2>)
 			uniformMatrix4x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat3x4>)
+		if constexpr (std::is_same_v<T, mat3x4>)
 			uniformMatrix3x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, glm::mat4x3>)
+		if constexpr (std::is_same_v<T, mat4x3>)
 			uniformMatrix4x3fv(location, count, transpose, v);
 #endif
 	}
@@ -569,29 +568,29 @@ namespace GL
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2f(int location, float v0, float v1);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2f(int location, const glm::vec2& v);
+	GLCW_API void uniform2f(int location, const fvec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3f(int location, float v0, float v1, float v2);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3f(int location, const glm::vec3& v);
+	GLCW_API void uniform3f(int location, const fvec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4f(int location, float v0, float v1, float v2, float v3);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4f(int location, const glm::vec4& v);
+	GLCW_API void uniform4f(int location, const fvec4& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform1i(int location, int v0);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2i(int location, int v0, int v1);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2i(int location, const glm::ivec2& v);
+	GLCW_API void uniform2i(int location, const ivec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3i(int location, int v0, int v1, int v2);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3i(int location, const glm::ivec3& v);
+	GLCW_API void uniform3i(int location, const ivec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4i(int location, int v0, int v1, int v2, int v3);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4i(int location, const glm::ivec4& v);
+	GLCW_API void uniform4i(int location, const ivec4& v);
 
 #if GL_DESKTOP || EC(3, 0)
 	//glUniform — Specify the value of a uniform variable for the current program object
@@ -599,97 +598,97 @@ namespace GL
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2ui(int location, unsigned int v0, unsigned int v1);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2ui(int location, const glm::uvec2& v);
+	GLCW_API void uniform2ui(int location, const uvec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3ui(int location, unsigned int v0, unsigned int v1, unsigned int v2);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3ui(int location, const glm::uvec3& v);
+	GLCW_API void uniform3ui(int location, const uvec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4ui(int location, unsigned int v0, unsigned int v1, unsigned int v2, unsigned int v3);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4ui(int location, const glm::uvec4& v);
+	GLCW_API void uniform4ui(int location, const uvec4& v);
 #endif
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform1fv(int location, int count, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2fv(int location, int count, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2fv(int location, int count, const glm::vec2& v);
+	GLCW_API void uniform2fv(int location, int count, const fvec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3fv(int location, int count, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3fv(int location, int count, const glm::vec3& v);
+	GLCW_API void uniform3fv(int location, int count, const fvec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4fv(int location, int count, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4fv(int location, int count, const glm::vec4& v);
+	GLCW_API void uniform4fv(int location, int count, const fvec4& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform1iv(int location, int count, const int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2iv(int location, int count, const int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2iv(int location, int count, const glm::ivec2& v);
+	GLCW_API void uniform2iv(int location, int count, const ivec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3iv(int location, int count, const int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3iv(int location, int count, const glm::ivec3& v);
+	GLCW_API void uniform3iv(int location, int count, const ivec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4iv(int location, int count, const int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4iv(int location, int count, const glm::ivec4& v);
+	GLCW_API void uniform4iv(int location, int count, const ivec4& v);
 #if GL_DESKTOP || EC(3, 0)
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform1uiv(int location, int count, const unsigned int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform2uiv(int location, int count, const unsigned int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform2uiv(int location, int count, const glm::uvec2& v);
+	GLCW_API void uniform2uiv(int location, int count, const uvec2& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform3uiv(int location, int count, const unsigned int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform3uiv(int location, int count, const glm::uvec3& v);
+	GLCW_API void uniform3uiv(int location, int count, const uvec3& v);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform4uiv(int location, int count, const unsigned int* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniform4uiv(int location, int count, const glm::uvec4& v);
+	GLCW_API void uniform4uiv(int location, int count, const uvec4& v);
 #endif
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix2fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix2fv(int location, int count, bool transpose, const glm::mat2& value);
+	GLCW_API void uniformMatrix2fv(int location, int count, bool transpose, const mat2& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix3fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix3fv(int location, int count, bool transpose, const glm::mat3& value);
+	GLCW_API void uniformMatrix3fv(int location, int count, bool transpose, const mat3& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix4fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix4fv(int location, int count, bool transpose, const glm::mat4& value);
+	GLCW_API void uniformMatrix4fv(int location, int count, bool transpose, const mat4& value);
 #if GL_DESKTOP || EC(3, 0)
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix2x3fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix2x3fv(int location, int count, bool transpose, const glm::mat2x3& value);
+	GLCW_API void uniformMatrix2x3fv(int location, int count, bool transpose, const mat2x3& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix3x2fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix3x2fv(int location, int count, bool transpose, const glm::mat3x2& value);
+	GLCW_API void uniformMatrix3x2fv(int location, int count, bool transpose, const mat3x2& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix2x4fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix2x4fv(int location, int count, bool transpose, const glm::mat2x4& value);
+	GLCW_API void uniformMatrix2x4fv(int location, int count, bool transpose, const mat2x4& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix4x2fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix4x2fv(int location, int count, bool transpose, const glm::mat4x2& value);
+	GLCW_API void uniformMatrix4x2fv(int location, int count, bool transpose, const mat4x2& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix3x4fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix3x4fv(int location, int count, bool transpose, const glm::mat3x4& value);
+	GLCW_API void uniformMatrix3x4fv(int location, int count, bool transpose, const mat3x4& value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix4x3fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
-	GLCW_API void uniformMatrix4x3fv(int location, int count, bool transpose, const glm::mat4x3& value);
+	GLCW_API void uniformMatrix4x3fv(int location, int count, bool transpose, const mat4x3& value);
 
 	//glUniformBlockBinding — assign a binding point to an active uniform block
 	GLCW_API void uniformBlockBinding(unsigned int program, unsigned int uniformBlockIndex, unsigned int uniformBlockBinding);

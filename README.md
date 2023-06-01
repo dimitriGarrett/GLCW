@@ -14,6 +14,10 @@ To change the version, go to Config.h, and change the GL_VERSION_MAJOR, and GL_V
 # C++17
 C++17 is required, because the library heavily uses std::string_view, but support in the future may be added for any other version, by removing std::string_view with something else.
 
+# Vector and Matrix Types
+There are bare bones types added in the vec header, but that can be removed and the using declarations can be replaced in Config.h if you have your own vector and matrix types that you want to use. If you need a good library, 
+GLM is really good, and is really easy to get started with and work with. It is also designed around OpenGL (GL Mathematics). https://github.com/g-truc/glm/
+
 # Example
 
 ```

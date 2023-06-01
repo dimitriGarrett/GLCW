@@ -1,7 +1,6 @@
 #pragma once
 
 #include "API.h"
-#include "GLM.h"
 #include "Enums.h"
 
 #include "Textures.h"
@@ -11,6 +10,8 @@
 #if VC(4, 2) || EC(3, 1)
 	#include "BitfieldWrapper.h"
 #endif
+
+#include <string_view>
 
 namespace GL
 {
@@ -56,7 +57,7 @@ namespace GL
 	//glDispatchCompute — launch one or more compute work groups
 	GLCW_API void dispatchCompute(unsigned int num_groups_x, unsigned int num_groups_y, unsigned int num_groups_z);
 	//glDispatchCompute — launch one or more compute work groups
-	GLCW_API void dispatchCompute(const glm::uvec3& num_groups);
+	GLCW_API void dispatchCompute(const uvec3& num_groups);
 
 	//glDispatchComputeIndirect — launch one or more compute work groups using parameters stored in a buffer
 	GLCW_API void dispatchComputeIndirect(long long indirect);
@@ -77,7 +78,7 @@ namespace GL
 	//glGetMultisamplefv — retrieve the location of a sample
 	GLCW_API void getMultisamplefv(unsigned int index, float* val);
 	//glGetMultisamplefv — retrieve the location of a sample
-	GLCW_API glm::vec2 getMultisamplefv(unsigned int index);
+	GLCW_API fvec2 getMultisamplefv(unsigned int index);
 #endif
 #if VC(4, 2) || EC(3, 1)
 	//glMemoryBarrier — defines a barrier ordering memory transactions

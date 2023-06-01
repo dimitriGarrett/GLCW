@@ -7,9 +7,9 @@ inline void GL::blendColor(float r, float g, float b, float a)
 	glBlendColor(r, g, b, a);
 }
 
-inline void GL::blendColor(const glm::vec4& rgba)
+inline void GL::blendColor(const fvec4& rgba)
 {
-	glBlendColor(rgba.r, rgba.g, rgba.b, rgba.a);
+	glBlendColor(rgba.x, rgba.y, rgba.z, rgba.w);
 }
 
 inline void GL::blendEquation(GL_ENUM eq)
@@ -79,9 +79,9 @@ inline void GL::colorMask(bool red, bool green, bool blue, bool alpha)
 	glColorMask(red, green, blue, alpha);
 }
 
-inline void GL::colorMask(const glm::bvec4& rgba)
+inline void GL::colorMask(const bvec4& rgba)
 {
-	colorMask(rgba.r, rgba.b, rgba.b, rgba.a);
+	colorMask(rgba.x, rgba.y, rgba.z, rgba.w);
 }
 
 #if GL_DESKTOP
@@ -90,9 +90,9 @@ inline void GL::colorMask(const glm::bvec4& rgba)
 		glColorMaski(drawBuffer, red, green, blue, alpha);
 	}
 
-	inline void GL::colorMaski(unsigned int drawBuffer, const glm::bvec4& rgba)
+	inline void GL::colorMaski(unsigned int drawBuffer, const bvec4& rgba)
 	{
-		colorMaski(drawBuffer, rgba.r, rgba.b, rgba.b, rgba.a);
+		colorMaski(drawBuffer, rgba.x, rgba.y, rgba.z, rgba.w);
 	}
 #endif
 
@@ -117,7 +117,7 @@ inline void GL::depthRange(double near, double far)
 	glDepthRange(near, far);
 }
 
-inline void GL::depthRange(const glm::dvec2& nearAndFar)
+inline void GL::depthRange(const dvec2& nearAndFar)
 {
 	depthRange(nearAndFar.x, nearAndFar.y);
 }
@@ -128,7 +128,7 @@ inline void GL::depthRangef(float near, float far)
 	glDepthRangef(near, far);
 }
 
-inline void GL::depthRangef(const glm::fvec2& nearAndFar)
+inline void GL::depthRangef(const fvec2& nearAndFar)
 {
 	depthRangef(nearAndFar.x, nearAndFar.y);
 }
@@ -145,7 +145,7 @@ inline void GL::depthRangeIndexed(unsigned int index, double nearVal, double far
 	glDepthRangeIndexed(index, nearVal, farVal);
 }
 
-inline void GL::depthRangeIndexed(unsigned int index, const glm::vec2& nearAndFar)
+inline void GL::depthRangeIndexed(unsigned int index, const dvec2& nearAndFar)
 {
 	depthRangeIndexed(index, nearAndFar.x, nearAndFar.y);
 }
@@ -397,7 +397,7 @@ inline void GL::scissor(int x, int y, int width, int height)
 	glScissor(x, y, width, height);
 }
 
-inline void GL::scissor(const glm::ivec4& xYWidthHeight)
+inline void GL::scissor(const ivec4& xYWidthHeight)
 {
 	scissor(xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
 }
@@ -413,7 +413,7 @@ inline void GL::scissorIndexed(unsigned int index, int left, int bottom, int wid
 	glScissorIndexed(index, left, bottom, width, height);
 }
 
-inline void GL::scissorIndexed(unsigned int index, const glm::ivec4& leftBottomWidthHeight)
+inline void GL::scissorIndexed(unsigned int index, const ivec4& leftBottomWidthHeight)
 {
 	scissorIndexed(index, leftBottomWidthHeight.x, leftBottomWidthHeight.y, leftBottomWidthHeight.z, leftBottomWidthHeight.w);
 }
@@ -459,7 +459,7 @@ inline void GL::viewport(int x, int y, int width, int height)
 	glViewport(x, y, width, height);
 }
 
-inline void GL::viewport(const glm::ivec4& xYWidthHeight)
+inline void GL::viewport(const ivec4& xYWidthHeight)
 {
 	viewport(xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
 }
@@ -475,7 +475,7 @@ inline  void GL::viewportIndexedf(unsigned int index, float x, float y, float wi
 	glViewportIndexedf(index, x, y, width, height);
 }
 
-inline void GL::viewportIndexedf(unsigned int index, const glm::vec4& xYWidthHeight)
+inline void GL::viewportIndexedf(unsigned int index, const fvec4& xYWidthHeight)
 {
 	viewportIndexedf(index, xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
 }

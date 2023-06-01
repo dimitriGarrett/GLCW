@@ -7,7 +7,7 @@
 		glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
 	}
 
-	inline void GL::dispatchCompute(const glm::uvec3& num_groups)
+	inline void GL::dispatchCompute(const uvec3& num_groups)
 	{
 		dispatchCompute(num_groups.x, num_groups.y, num_groups.z);
 	}
@@ -45,9 +45,9 @@
 		glGetMultisamplefv(GL_SAMPLE_POSITION, index, val);
 	}
 
-	inline glm::vec2 GL::getMultisamplefv(unsigned int index)
+	inline fvec2 GL::getMultisamplefv(unsigned int index)
 	{
-		glm::vec2 temp;
+		fvec2 temp;
 		glGetMultisamplefv(GL_SAMPLE_POSITION, index, &temp.x);
 		return temp;
 	}

@@ -4,6 +4,8 @@
 #include "Enums.h"
 #include "Rendering.h"
 
+#include <vector>
+
 namespace GL
 {
 	namespace detail

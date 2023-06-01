@@ -371,9 +371,9 @@ inline void GL::getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionTy
 	glGetShaderPrecisionFormat(static_cast<unsigned int>(shaderType), static_cast<unsigned int>(precisionType), range, precision);
 }
 
-inline std::pair<glm::ivec2, int> GL::getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType)
+inline std::pair<ivec2, int> GL::getShaderPrecisionFormat(GL_ENUM shaderType, GL_ENUM precisionType)
 {
-	std::pair<glm::ivec2, int> temp;
+	std::pair<ivec2, int> temp;
 	getShaderPrecisionFormat(shaderType, precisionType, &temp.first.x, &temp.second);
 	return temp;
 }
@@ -417,23 +417,23 @@ inline float GL::getSingleUniformfv(unsigned int program, int location)
 	return temp;
 }
 
-inline glm::vec2 GL::getDoubleUniformfv(unsigned int program, int location)
+inline fvec2 GL::getDoubleUniformfv(unsigned int program, int location)
 {
-	glm::vec2 temp;
+	fvec2 temp;
 	getUniformfv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::vec3 GL::getTripleUniformfv(unsigned int program, int location)
+inline fvec3 GL::getTripleUniformfv(unsigned int program, int location)
 {
-	glm::vec3 temp;
+	fvec3 temp;
 	getUniformfv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::vec4 GL::getQuadUniformfv(unsigned int program, int location)
+inline fvec4 GL::getQuadUniformfv(unsigned int program, int location)
 {
-	glm::vec4 temp;
+	fvec4 temp;
 	getUniformfv(program, location, &temp.x);
 	return temp;
 }
@@ -450,23 +450,23 @@ inline int GL::getSingleUniformiv(unsigned int program, int location)
 	return temp;
 }
 
-inline glm::ivec2 GL::getDoubleUniformiv(unsigned int program, int location)
+inline ivec2 GL::getDoubleUniformiv(unsigned int program, int location)
 {
-	glm::ivec2 temp;
+	ivec2 temp;
 	getUniformiv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::ivec3 GL::getTripleUniformiv(unsigned int program, int location)
+inline ivec3 GL::getTripleUniformiv(unsigned int program, int location)
 {
-	glm::ivec3 temp;
+	ivec3 temp;
 	getUniformiv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::ivec4 GL::getQuadUniformiv(unsigned int program, int location)
+inline ivec4 GL::getQuadUniformiv(unsigned int program, int location)
 {
-	glm::ivec4 temp;
+	ivec4 temp;
 	getUniformiv(program, location, &temp.x);
 	return temp;
 }
@@ -483,23 +483,23 @@ inline unsigned int GL::getSingleUniformuiv(unsigned int program, int location)
 	return temp;
 }
 
-inline glm::uvec2 GL::getDoubleUniformuiv(unsigned int program, int location)
+inline uvec2 GL::getDoubleUniformuiv(unsigned int program, int location)
 {
-	glm::uvec2 temp;
+	uvec2 temp;
 	getUniformuiv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::uvec3 GL::getTripleUniformuiv(unsigned int program, int location)
+inline uvec3 GL::getTripleUniformuiv(unsigned int program, int location)
 {
-	glm::uvec3 temp;
+	uvec3 temp;
 	getUniformuiv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::uvec4 GL::getQuadUniformuiv(unsigned int program, int location)
+inline uvec4 GL::getQuadUniformuiv(unsigned int program, int location)
 {
-	glm::uvec4 temp;
+	uvec4 temp;
 	getUniformuiv(program, location, &temp.x);
 	return temp;
 }
@@ -517,23 +517,23 @@ inline double GL::getSingleUniformdv(unsigned int program, int location)
 	return temp;
 }
 
-inline glm::dvec2 GL::getDoubleUniformdv(unsigned int program, int location)
+inline dvec2 GL::getDoubleUniformdv(unsigned int program, int location)
 {
-	glm::dvec2 temp;
+	dvec2 temp;
 	getUniformdv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::dvec3 GL::getTripleUniformdv(unsigned int program, int location)
+inline dvec3 GL::getTripleUniformdv(unsigned int program, int location)
 {
-	glm::dvec3 temp;
+	dvec3 temp;
 	getUniformdv(program, location, &temp.x);
 	return temp;
 }
 
-inline glm::dvec4 GL::getQuadUniformdv(unsigned int program, int location)
+inline dvec4 GL::getQuadUniformdv(unsigned int program, int location)
 {
-	glm::dvec4 temp;
+	dvec4 temp;
 	getUniformdv(program, location, &temp.x);
 	return temp;
 }
@@ -648,7 +648,7 @@ inline void GL::programUniform2f(unsigned int program, int location, float v0, f
 	glProgramUniform2f(program, location, v0, v1);
 }
 
-inline void GL::programUniform2f(unsigned int program, int location, const glm::vec2& v)
+inline void GL::programUniform2f(unsigned int program, int location, const fvec2& v)
 {
 	glProgramUniform2f(program, location, v.x, v.y);
 }
@@ -658,7 +658,7 @@ inline void GL::programUniform3f(unsigned int program, int location, float v0, f
 	glProgramUniform3f(program, location, v0, v1, v2);
 }
 
-inline void GL::programUniform3f(unsigned int program, int location, const glm::vec3& v)
+inline void GL::programUniform3f(unsigned int program, int location, const fvec3& v)
 {
 	glProgramUniform3f(program, location, v.x, v.y, v.z);
 }
@@ -668,7 +668,7 @@ inline void GL::programUniform4f(unsigned int program, int location, float v0, f
 	glProgramUniform4f(program, location, v0, v1, v2, v3);
 }
 
-inline void GL::programUniform4f(unsigned int program, int location, const glm::vec4& v)
+inline void GL::programUniform4f(unsigned int program, int location, const fvec4& v)
 {
 	glProgramUniform4f(program, location, v.x, v.y, v.z, v.w);
 }
@@ -683,7 +683,7 @@ inline void GL::programUniform2i(unsigned int program, int location, int v0, int
 	glProgramUniform2i(program, location, v0, v1);
 }
 
-inline void GL::programUniform2i(unsigned int program, int location, const glm::ivec2& v)
+inline void GL::programUniform2i(unsigned int program, int location, const ivec2& v)
 {
 	glProgramUniform2i(program, location, v.x, v.y);
 }
@@ -693,7 +693,7 @@ inline void GL::programUniform3i(unsigned int program, int location, int v0, int
 	glProgramUniform3i(program, location, v0, v1, v2);
 }
 
-inline void GL::programUniform3i(unsigned int program, int location, const glm::ivec3& v)
+inline void GL::programUniform3i(unsigned int program, int location, const ivec3& v)
 {
 	glProgramUniform3i(program, location, v.x, v.y, v.z);
 }
@@ -703,7 +703,7 @@ inline void GL::programUniform4i(unsigned int program, int location, int v0, int
 	glProgramUniform4i(program, location, v0, v1, v2, v3);
 }
 
-inline void GL::programUniform4i(unsigned int program, int location, const glm::ivec4& v)
+inline void GL::programUniform4i(unsigned int program, int location, const ivec4& v)
 {
 	glProgramUniform4i(program, location, v.x, v.y, v.z, v.w);
 }
@@ -718,7 +718,7 @@ inline void GL::programUniform2ui(unsigned int program, int location, unsigned i
 	glProgramUniform2ui(program, location, v0, v1);
 }
 
-inline void GL::programUniform2ui(unsigned int program, int location, const glm::uvec2& v)
+inline void GL::programUniform2ui(unsigned int program, int location, const uvec2& v)
 {
 	glProgramUniform2ui(program, location, v.x, v.y);
 }
@@ -728,7 +728,7 @@ inline void GL::programUniform3ui(unsigned int program, int location, unsigned i
 	glProgramUniform3ui(program, location, v0, v1, v2);
 }
 
-inline void GL::programUniform3ui(unsigned int program, int location, const glm::uvec3& v)
+inline void GL::programUniform3ui(unsigned int program, int location, const uvec3& v)
 {
 	glProgramUniform3ui(program, location, v.x, v.y, v.z);
 }
@@ -738,7 +738,7 @@ inline void GL::programUniform4ui(unsigned int program, int location, unsigned i
 	glProgramUniform4ui(program, location, v0, v1, v2, v3);
 }
 
-inline void GL::programUniform4ui(unsigned int program, int location, const glm::uvec4& v)
+inline void GL::programUniform4ui(unsigned int program, int location, const uvec4& v)
 {
 	glProgramUniform4ui(program, location, v.x, v.y, v.z, v.w);
 }
@@ -753,7 +753,7 @@ inline void GL::programUniform2fv(unsigned int program, int location, int count,
 	glProgramUniform2fv(program, location, count, value);
 }
 
-inline void GL::programUniform2fv(unsigned int program, int location, int count, const glm::vec2& v)
+inline void GL::programUniform2fv(unsigned int program, int location, int count, const fvec2& v)
 {
 	glProgramUniform2fv(program, location, count, &v.x);
 }
@@ -763,7 +763,7 @@ inline void GL::programUniform3fv(unsigned int program, int location, int count,
 	glProgramUniform3fv(program, location, count, value);
 }
 
-inline void GL::programUniform3fv(unsigned int program, int location, int count, const glm::vec3& v)
+inline void GL::programUniform3fv(unsigned int program, int location, int count, const fvec3& v)
 {
 	glProgramUniform3fv(program, location, count, &v.x);
 }
@@ -773,7 +773,7 @@ inline void GL::programUniform4fv(unsigned int program, int location, int count,
 	glProgramUniform4fv(program, location, count, value);
 }
 
-inline void GL::programUniform4fv(unsigned int program, int location, int count, const glm::vec4& v)
+inline void GL::programUniform4fv(unsigned int program, int location, int count, const fvec4& v)
 {
 	glProgramUniform4fv(program, location, count, &v.x);
 }
@@ -788,7 +788,7 @@ inline void GL::programUniform2iv(unsigned int program, int location, int count,
 	glProgramUniform2iv(program, location, count, value);
 }
 
-inline void GL::programUniform2iv(unsigned int program, int location, int count, const glm::ivec2& v)
+inline void GL::programUniform2iv(unsigned int program, int location, int count, const ivec2& v)
 {
 	glProgramUniform2iv(program, location, count, &v.x);
 }
@@ -798,7 +798,7 @@ inline void GL::programUniform3iv(unsigned int program, int location, int count,
 	glProgramUniform3iv(program, location, count, value);
 }
 
-inline void GL::programUniform3iv(unsigned int program, int location, int count, const glm::ivec3& v)
+inline void GL::programUniform3iv(unsigned int program, int location, int count, const ivec3& v)
 {
 	glProgramUniform3iv(program, location, count, &v.x);
 }
@@ -808,7 +808,7 @@ inline void GL::programUniform4iv(unsigned int program, int location, int count,
 	glProgramUniform4iv(program, location, count, value);
 }
 
-inline void GL::programUniform4iv(unsigned int program, int location, int count, const glm::ivec4& v)
+inline void GL::programUniform4iv(unsigned int program, int location, int count, const ivec4& v)
 {
 	glProgramUniform4iv(program, location, count, &v.x);
 }
@@ -823,7 +823,7 @@ inline void GL::programUniform2uiv(unsigned int program, int location, int count
 	glProgramUniform2uiv(program, location, count, value);
 }
 
-inline void GL::programUniform2uiv(unsigned int program, int location, int count, const glm::uvec2& v)
+inline void GL::programUniform2uiv(unsigned int program, int location, int count, const uvec2& v)
 {
 	glProgramUniform2uiv(program, location, count, &v.x);
 }
@@ -833,7 +833,7 @@ inline void GL::programUniform3uiv(unsigned int program, int location, int count
 	glProgramUniform3uiv(program, location, count, value);
 }
 
-inline void GL::programUniform3uiv(unsigned int program, int location, int count, const glm::uvec3& v)
+inline void GL::programUniform3uiv(unsigned int program, int location, int count, const uvec3& v)
 {
 	glProgramUniform3uiv(program, location, count, &v.x);
 }
@@ -843,7 +843,7 @@ inline void GL::programUniform4uiv(unsigned int program, int location, int count
 	glProgramUniform4uiv(program, location, count, value);
 }
 
-inline void GL::programUniform4uiv(unsigned int program, int location, int count, const glm::uvec4& v)
+inline void GL::programUniform4uiv(unsigned int program, int location, int count, const uvec4& v)
 {
 	glProgramUniform4uiv(program, location, count, &v.x);
 }
@@ -853,7 +853,7 @@ inline void GL::programUniformMatrix2fv(unsigned int program, int location, int 
 	glProgramUniformMatrix2fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix2fv(unsigned int program, int location, int count, bool transpose, const glm::mat2& value)
+inline void GL::programUniformMatrix2fv(unsigned int program, int location, int count, bool transpose, const mat2& value)
 {
 	glProgramUniformMatrix2fv(program, location, count, transpose, &value[0][0]);
 }
@@ -863,7 +863,7 @@ inline void GL::programUniformMatrix3fv(unsigned int program, int location, int 
 	glProgramUniformMatrix3fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix3fv(unsigned int program, int location, int count, bool transpose, const glm::mat3& value)
+inline void GL::programUniformMatrix3fv(unsigned int program, int location, int count, bool transpose, const mat3& value)
 {
 	glProgramUniformMatrix3fv(program, location, count, transpose, &value[0][0]);
 }
@@ -873,7 +873,7 @@ inline void GL::programUniformMatrix4fv(unsigned int program, int location, int 
 	glProgramUniformMatrix4fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix4fv(unsigned int program, int location, int count, bool transpose, const glm::mat4& value)
+inline void GL::programUniformMatrix4fv(unsigned int program, int location, int count, bool transpose, const mat4& value)
 {
 	glProgramUniformMatrix4fv(program, location, count, transpose, &value[0][0]);
 }
@@ -883,7 +883,7 @@ inline void GL::programUniformMatrix2x3fv(unsigned int program, int location, in
 	glProgramUniformMatrix2x3fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix2x3fv(unsigned int program, int location, int count, bool transpose, const glm::mat2x3& value)
+inline void GL::programUniformMatrix2x3fv(unsigned int program, int location, int count, bool transpose, const mat2x3& value)
 {
 	glProgramUniformMatrix2x3fv(program, location, count, transpose, &value[0][0]);
 }
@@ -893,7 +893,7 @@ inline void GL::programUniformMatrix3x2fv(unsigned int program, int location, in
 	glProgramUniformMatrix3x2fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix3x2fv(unsigned int program, int location, int count, bool transpose, const glm::mat3x2& value)
+inline void GL::programUniformMatrix3x2fv(unsigned int program, int location, int count, bool transpose, const mat3x2& value)
 {
 	glProgramUniformMatrix3x2fv(program, location, count, transpose, &value[0][0]);
 }
@@ -903,7 +903,7 @@ inline void GL::programUniformMatrix2x4fv(unsigned int program, int location, in
 	glProgramUniformMatrix2x4fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix2x4fv(unsigned int program, int location, int count, bool transpose, const glm::mat2x4& value)
+inline void GL::programUniformMatrix2x4fv(unsigned int program, int location, int count, bool transpose, const mat2x4& value)
 {
 	glProgramUniformMatrix2x4fv(program, location, count, transpose, &value[0][0]);
 }
@@ -913,7 +913,7 @@ inline void GL::programUniformMatrix4x2fv(unsigned int program, int location, in
 	glProgramUniformMatrix4x2fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix4x2fv(unsigned int program, int location, int count, bool transpose, const glm::mat4x2& value)
+inline void GL::programUniformMatrix4x2fv(unsigned int program, int location, int count, bool transpose, const mat4x2& value)
 {
 	glProgramUniformMatrix4x2fv(program, location, count, transpose, &value[0][0]);
 }
@@ -923,7 +923,7 @@ inline void GL::programUniformMatrix3x4fv(unsigned int program, int location, in
 	glProgramUniformMatrix3x4fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix3x4fv(unsigned int program, int location, int count, bool transpose, const glm::mat3x4& value)
+inline void GL::programUniformMatrix3x4fv(unsigned int program, int location, int count, bool transpose, const mat3x4& value)
 {
 	glProgramUniformMatrix3x4fv(program, location, count, transpose, &value[0][0]);
 }
@@ -933,7 +933,7 @@ inline void GL::programUniformMatrix4x3fv(unsigned int program, int location, in
 	glProgramUniformMatrix4x3fv(program, location, count, transpose, value);
 }
 
-inline void GL::programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const glm::mat4x3& value)
+inline void GL::programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const mat4x3& value)
 {
 	glProgramUniformMatrix4x3fv(program, location, count, transpose, &value[0][0]);
 }
@@ -990,7 +990,7 @@ inline void GL::uniform2f(int location, float v0, float v1)
 	glUniform2f(location, v0, v1);
 }
 
-inline void GL::uniform2f(int location, const glm::vec2& v)
+inline void GL::uniform2f(int location, const fvec2& v)
 {
 	glUniform2f(location, v.x, v.y);
 }
@@ -1000,7 +1000,7 @@ inline void GL::uniform3f(int location, float v0, float v1, float v2)
 	glUniform3f(location, v0, v1, v2);
 }
 
-inline void GL::uniform3f(int location, const glm::vec3& v)
+inline void GL::uniform3f(int location, const fvec3& v)
 {
 	glUniform3f(location, v.x, v.y, v.z);
 }
@@ -1010,7 +1010,7 @@ inline void GL::uniform4f(int location, float v0, float v1, float v2, float v3)
 	glUniform4f(location, v0, v1, v2, v3);
 }
 
-inline void GL::uniform4f(int location, const glm::vec4& v)
+inline void GL::uniform4f(int location, const fvec4& v)
 {
 	glUniform4f(location, v.x, v.y, v.z, v.w);
 }
@@ -1025,7 +1025,7 @@ inline void GL::uniform2i(int location, int v0, int v1)
 	glUniform2i(location, v0, v1);
 }
 
-inline void GL::uniform2i(int location, const glm::ivec2& v)
+inline void GL::uniform2i(int location, const ivec2& v)
 {
 	glUniform2i(location, v.x, v.y);
 }
@@ -1035,7 +1035,7 @@ inline void GL::uniform3i(int location, int v0, int v1, int v2)
 	glUniform3i(location, v0, v1, v2);
 }
 
-inline void GL::uniform3i(int location, const glm::ivec3& v)
+inline void GL::uniform3i(int location, const ivec3& v)
 {
 	glUniform3i(location, v.x, v.y, v.z);
 }
@@ -1045,7 +1045,7 @@ inline void GL::uniform4i(int location, int v0, int v1, int v2, int v3)
 	glUniform4i(location, v0, v1, v2, v3);
 }
 
-inline void GL::uniform4i(int location, const glm::ivec4& v)
+inline void GL::uniform4i(int location, const ivec4& v)
 {
 	glUniform4i(location, v.x, v.y, v.z, v.w);
 }
@@ -1061,7 +1061,7 @@ inline void GL::uniform2ui(int location, unsigned int v0, unsigned int v1)
 	glUniform2ui(location, v0, v1);
 }
 
-inline void GL::uniform2ui(int location, const glm::uvec2& v)
+inline void GL::uniform2ui(int location, const uvec2& v)
 {
 	glUniform2ui(location, v.x, v.y);
 }
@@ -1071,7 +1071,7 @@ inline void GL::uniform3ui(int location, unsigned int v0, unsigned int v1, unsig
 	glUniform3ui(location, v0, v1, v2);
 }
 
-inline void GL::uniform3ui(int location, const glm::uvec3& v)
+inline void GL::uniform3ui(int location, const uvec3& v)
 {
 	glUniform3ui(location, v.x, v.y, v.z);
 }
@@ -1081,7 +1081,7 @@ inline void GL::uniform4ui(int location, unsigned int v0, unsigned int v1, unsig
 	glUniform4ui(location, v0, v1, v2, v3);
 }
 
-inline void GL::uniform4ui(int location, const glm::uvec4& v)
+inline void GL::uniform4ui(int location, const uvec4& v)
 {
 	glUniform4ui(location, v.x, v.y, v.z, v.w);
 }
@@ -1097,7 +1097,7 @@ inline void GL::uniform2fv(int location, int count, const float* value)
 	glUniform2fv(location, count, value);
 }
 
-inline void GL::uniform2fv(int location, int count, const glm::vec2& v)
+inline void GL::uniform2fv(int location, int count, const fvec2& v)
 {
 	glUniform2fv(location, count, &v.x);
 }
@@ -1107,7 +1107,7 @@ inline void GL::uniform3fv(int location, int count, const float* value)
 	glUniform3fv(location, count, value);
 }
 
-inline void GL::uniform3fv(int location, int count, const glm::vec3& v)
+inline void GL::uniform3fv(int location, int count, const fvec3& v)
 {
 	glUniform3fv(location, count, &v.x);
 }
@@ -1117,7 +1117,7 @@ inline void GL::uniform4fv(int location, int count, const float* value)
 	glUniform4fv(location, count, value);
 }
 
-inline void GL::uniform4fv(int location, int count, const glm::vec4& v)
+inline void GL::uniform4fv(int location, int count, const fvec4& v)
 {
 	glUniform4fv(location, count, &v.x);
 }
@@ -1132,7 +1132,7 @@ inline void GL::uniform2iv(int location, int count, const int* value)
 	glUniform2iv(location, count, value);
 }
 
-inline void GL::uniform2iv(int location, int count, const glm::ivec2& v)
+inline void GL::uniform2iv(int location, int count, const ivec2& v)
 {
 	glUniform2iv(location, count, &v.x);
 }
@@ -1142,7 +1142,7 @@ inline void GL::uniform3iv(int location, int count, const int* value)
 	glUniform3iv(location, count, value);
 }
 
-inline void GL::uniform3iv(int location, int count, const glm::ivec3& v)
+inline void GL::uniform3iv(int location, int count, const ivec3& v)
 {
 	glUniform3iv(location, count, &v.x);
 }
@@ -1152,7 +1152,7 @@ inline void GL::uniform4iv(int location, int count, const int* value)
 	glUniform4iv(location, count, value);
 }
 
-inline void GL::uniform4iv(int location, int count, const glm::ivec4& v)
+inline void GL::uniform4iv(int location, int count, const ivec4& v)
 {
 	glUniform4iv(location, count, &v.x);
 }
@@ -1168,7 +1168,7 @@ inline void GL::uniform2uiv(int location, int count, const unsigned int* value)
 	glUniform2uiv(location, count, value);
 }
 
-inline void GL::uniform2uiv(int location, int count, const glm::uvec2& v)
+inline void GL::uniform2uiv(int location, int count, const uvec2& v)
 {
 	glUniform2uiv(location, count, &v.x);
 }
@@ -1178,7 +1178,7 @@ inline void GL::uniform3uiv(int location, int count, const unsigned int* value)
 	glUniform3uiv(location, count, value);
 }
 
-inline void GL::uniform3uiv(int location, int count, const glm::uvec3& v)
+inline void GL::uniform3uiv(int location, int count, const uvec3& v)
 {
 	glUniform3uiv(location, count, &v.x);
 }
@@ -1188,7 +1188,7 @@ inline void GL::uniform4uiv(int location, int count, const unsigned int* value)
 	glUniform4uiv(location, count, value);
 }
 
-inline void GL::uniform4uiv(int location, int count, const glm::uvec4& v)
+inline void GL::uniform4uiv(int location, int count, const uvec4& v)
 {
 	glUniform4uiv(location, count, &v.x);
 }
@@ -1199,7 +1199,7 @@ inline void GL::uniformMatrix2fv(int location, int count, bool transpose, const 
 	glUniformMatrix2fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix2fv(int location, int count, bool transpose, const glm::mat2& value)
+inline void GL::uniformMatrix2fv(int location, int count, bool transpose, const mat2& value)
 {
 	glUniformMatrix2fv(location, count, transpose, &value[0][0]);
 }
@@ -1209,7 +1209,7 @@ inline void GL::uniformMatrix3fv(int location, int count, bool transpose, const 
 	glUniformMatrix3fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix3fv(int location, int count, bool transpose, const glm::mat3& value)
+inline void GL::uniformMatrix3fv(int location, int count, bool transpose, const mat3& value)
 {
 	glUniformMatrix3fv(location, count, transpose, &value[0][0]);
 }
@@ -1219,7 +1219,7 @@ inline void GL::uniformMatrix4fv(int location, int count, bool transpose, const 
 	glUniformMatrix4fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix4fv(int location, int count, bool transpose, const glm::mat4& value)
+inline void GL::uniformMatrix4fv(int location, int count, bool transpose, const mat4& value)
 {
 	glUniformMatrix4fv(location, count, transpose, &value[0][0]);
 }
@@ -1230,7 +1230,7 @@ inline void GL::uniformMatrix2x3fv(int location, int count, bool transpose, cons
 	glUniformMatrix2x3fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix2x3fv(int location, int count, bool transpose, const glm::mat2x3& value)
+inline void GL::uniformMatrix2x3fv(int location, int count, bool transpose, const mat2x3& value)
 {
 	glUniformMatrix2x3fv(location, count, transpose, &value[0][0]);
 }
@@ -1240,7 +1240,7 @@ inline void GL::uniformMatrix3x2fv(int location, int count, bool transpose, cons
 	glUniformMatrix3x2fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix3x2fv(int location, int count, bool transpose, const glm::mat3x2& value)
+inline void GL::uniformMatrix3x2fv(int location, int count, bool transpose, const mat3x2& value)
 {
 	glUniformMatrix3x2fv(location, count, transpose, &value[0][0]);
 }
@@ -1250,7 +1250,7 @@ inline void GL::uniformMatrix2x4fv(int location, int count, bool transpose, cons
 	glUniformMatrix2x4fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix2x4fv(int location, int count, bool transpose, const glm::mat2x4& value)
+inline void GL::uniformMatrix2x4fv(int location, int count, bool transpose, const mat2x4& value)
 {
 	glUniformMatrix2x4fv(location, count, transpose, &value[0][0]);
 }
@@ -1260,7 +1260,7 @@ inline void GL::uniformMatrix4x2fv(int location, int count, bool transpose, cons
 	glUniformMatrix4x2fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix4x2fv(int location, int count, bool transpose, const glm::mat4x2& value)
+inline void GL::uniformMatrix4x2fv(int location, int count, bool transpose, const mat4x2& value)
 {
 	glUniformMatrix4x2fv(location, count, transpose, &value[0][0]);
 }
@@ -1270,7 +1270,7 @@ inline void GL::uniformMatrix3x4fv(int location, int count, bool transpose, cons
 	glUniformMatrix3x4fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix3x4fv(int location, int count, bool transpose, const glm::mat3x4& value)
+inline void GL::uniformMatrix3x4fv(int location, int count, bool transpose, const mat3x4& value)
 {
 	glUniformMatrix3x4fv(location, count, transpose, &value[0][0]);
 }
@@ -1280,7 +1280,7 @@ inline void GL::uniformMatrix4x3fv(int location, int count, bool transpose, cons
 	glUniformMatrix4x3fv(location, count, transpose, value);
 }
 
-inline void GL::uniformMatrix4x3fv(int location, int count, bool transpose, const glm::mat4x3& value)
+inline void GL::uniformMatrix4x3fv(int location, int count, bool transpose, const mat4x3& value)
 {
 	glUniformMatrix4x3fv(location, count, transpose, &value[0][0]);
 }

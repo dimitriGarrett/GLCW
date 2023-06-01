@@ -522,7 +522,7 @@ inline void GL::vertexAttrib2f(unsigned int index, float v0, float v1)
 	glVertexAttrib2f(index, v0, v1);
 }
 
-inline void GL::vertexAttrib2f(unsigned int index, const glm::vec2& v)
+inline void GL::vertexAttrib2f(unsigned int index, const fvec2& v)
 {
 	glVertexAttrib2f(index, v.x, v.y);
 }
@@ -533,7 +533,7 @@ inline void GL::vertexAttrib2s(unsigned int index, short v0, short v1)
 	glVertexAttrib2s(index, v0, v1);
 }
 
-inline void GL::vertexAttrib2s(unsigned int index, const glm::vec<2, short>& v)
+inline void GL::vertexAttrib2s(unsigned int index, const svec2& v)
 {
 	glVertexAttrib2s(index, v.x, v.y);
 }
@@ -543,7 +543,7 @@ inline void GL::vertexAttrib2d(unsigned int index, double v0, double v1)
 	glVertexAttrib2d(index, v0, v1);
 }
 
-inline void GL::vertexAttrib2d(unsigned int index, const glm::dvec2& v)
+inline void GL::vertexAttrib2d(unsigned int index, const dvec2& v)
 {
 	glVertexAttrib2d(index, v.x, v.y);
 }
@@ -552,7 +552,7 @@ inline void GL::vertexAttribI2i(unsigned int index, int v0, int v1)
 	glVertexAttribI2i(index, v0, v1);
 }
 
-inline void GL::vertexAttribI2i(unsigned int index, const glm::ivec2& v)
+inline void GL::vertexAttribI2i(unsigned int index, const ivec2& v)
 {
 	glVertexAttribI2i(index, v.x, v.y);
 }
@@ -562,7 +562,7 @@ inline void GL::vertexAttribI2ui(unsigned int index, unsigned int v0, unsigned i
 	glVertexAttribI2ui(index, v0, v1);
 }
 
-inline void GL::vertexAttribI2ui(unsigned int index, const glm::uvec2& v)
+inline void GL::vertexAttribI2ui(unsigned int index, const uvec2& v)
 {
 	glVertexAttribI2ui(index, v.x, v.y);
 }
@@ -573,7 +573,7 @@ inline void GL::vertexAttrib3f(unsigned int index, float v0, float v1, float v2)
 	glVertexAttrib3f(index, v0, v1, v2);
 }
 
-inline void GL::vertexAttrib3f(unsigned int index, const glm::vec3& v)
+inline void GL::vertexAttrib3f(unsigned int index, const fvec3& v)
 {
 	glVertexAttrib3f(index, v.x, v.y, v.z);
 }
@@ -584,7 +584,7 @@ inline void GL::vertexAttrib3s(unsigned int index, short v0, short v1, short v2)
 	glVertexAttrib3s(index, v0, v1, v2);
 }
 
-inline void GL::vertexAttrib3s(unsigned int index, const glm::vec<3, short>& v)
+inline void GL::vertexAttrib3s(unsigned int index, const svec3& v)
 {
 	glVertexAttrib3s(index, v.x, v.y, v.z);
 }
@@ -594,7 +594,7 @@ inline void GL::vertexAttrib3d(unsigned int index, double v0, double v1, double 
 	glVertexAttrib3d(index, v0, v1, v2);
 }
 
-inline void GL::vertexAttrib3d(unsigned int index, const glm::dvec3& v)
+inline void GL::vertexAttrib3d(unsigned int index, const dvec3& v)
 {
 	glVertexAttrib3d(index, v.x, v.y, v.z);
 }
@@ -604,7 +604,7 @@ inline void GL::vertexAttribI3i(unsigned int index, int v0, int v1, int v2)
 	glVertexAttribI3i(index, v0, v1, v2);
 }
 
-inline void GL::vertexAttribI3i(unsigned int index, const glm::ivec3& v)
+inline void GL::vertexAttribI3i(unsigned int index, const ivec3& v)
 {
 	glVertexAttribI3i(index, v.x, v.y, v.z);
 }
@@ -614,7 +614,7 @@ inline void GL::vertexAttribI3ui(unsigned int index, unsigned int v0, unsigned i
 	glVertexAttribI3ui(index, v0, v1, v2);
 }
 
-inline void GL::vertexAttribI3ui(unsigned int index, const glm::uvec3& v)
+inline void GL::vertexAttribI3ui(unsigned int index, const uvec3& v)
 {
 	glVertexAttribI3ui(index, v.x, v.y, v.z);
 }
@@ -625,7 +625,7 @@ inline void GL::vertexAttrib4f(unsigned int index, float v0, float v1, float v2,
 	glVertexAttrib4f(index, v0, v1, v2, v3);
 }
 
-inline void GL::vertexAttrib4f(unsigned int index, const glm::vec4& v)
+inline void GL::vertexAttrib4f(unsigned int index, const fvec4& v)
 {
 	glVertexAttrib4f(index, v.x, v.y, v.z, v.w);
 }
@@ -636,7 +636,7 @@ inline void GL::vertexAttrib4s(unsigned int index, short v0, short v1, short v2,
 	glVertexAttrib4s(index, v0, v1, v2, v3);
 }
 
-inline void GL::vertexAttrib4s(unsigned int index, const glm::vec<4, short>& v)
+inline void GL::vertexAttrib4s(unsigned int index, const svec4& v)
 {
 	glVertexAttrib4s(index, v.x, v.y, v.z, v.w);
 }
@@ -646,7 +646,7 @@ inline void GL::vertexAttrib4d(unsigned int index, double v0, double v1, double 
 	glVertexAttrib4d(index, v0, v1, v2, v3);
 }
 
-inline void GL::vertexAttrib4d(unsigned int index, const glm::dvec4& v)
+inline void GL::vertexAttrib4d(unsigned int index, const dvec4& v)
 {
 	glVertexAttrib4d(index, v.x, v.y, v.z, v.w);
 }
@@ -656,7 +656,7 @@ inline void GL::vertexAttribI4i(unsigned int index, int v0, int v1, int v2, int 
 	glVertexAttribI4i(index, v0, v1, v2, v3);
 }
 
-inline void GL::vertexAttribI4i(unsigned int index, const glm::ivec4& v)
+inline void GL::vertexAttribI4i(unsigned int index, const ivec4& v)
 {
 	glVertexAttribI4i(index, v.x, v.y, v.z, v.w);
 }
@@ -666,7 +666,7 @@ inline void GL::vertexAttribI4ui(unsigned int index, unsigned int v0, unsigned i
 	glVertexAttribI4ui(index, v0, v1, v2, v3);
 }
 
-inline void GL::vertexAttribI4ui(unsigned int index, const glm::uvec4& v)
+inline void GL::vertexAttribI4ui(unsigned int index, const uvec4& v)
 {
 	glVertexAttribI4ui(index, v.x, v.y, v.z, v.w);
 }
