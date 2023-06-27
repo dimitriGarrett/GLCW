@@ -314,58 +314,6 @@ namespace GL
 
 #if VC(4, 1) || EC(3, 1)
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
-	template <typename T>
-	void programUniform(unsigned int program, int location, const T& v, int count = 1, bool transpose = false)
-	{
-		if constexpr (std::is_same_v<T, float>)
-			programUniform1f(program, location, v);
-		if constexpr (std::is_same_v<T, fvec2>)
-			programUniform2f(program, location, v);
-		if constexpr (std::is_same_v<T, fvec3>)
-			programUniform3f(program, location, v);
-		if constexpr (std::is_same_v<T, fvec4>)
-			programUniform4f(program, location, v);
-
-		if constexpr (std::is_same_v<T, int>)
-			programUniform1i(program, location, v);
-		if constexpr (std::is_same_v<T, ivec2>)
-			programUniform2i(program, location, v);
-		if constexpr (std::is_same_v<T, ivec3>)
-			programUniform3i(program, location, v);
-		if constexpr (std::is_same_v<T, ivec4>)
-			programUniform4i(program, location, v);
-
-		if constexpr (std::is_same_v<T, unsigned int>)
-			programUniform1ui(program, location, v);
-		if constexpr (std::is_same_v<T, uvec2>)
-			programUniform2ui(program, location, v);
-		if constexpr (std::is_same_v<T, uvec3>)
-			programUniform3ui(program, location, v);
-		if constexpr (std::is_same_v<T, uvec4>)
-			programUniform4ui(program, location, v);
-
-		if constexpr (std::is_same_v<T, mat2>)
-			programUniformMatrix2fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3>)
-			programUniformMatrix3fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4>)
-			programUniformMatrix4fv(program, location, count, transpose, v);
-
-		if constexpr (std::is_same_v<T, mat2x3>)
-			programUniformMatrix2x3fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3x2>)
-			programUniformMatrix3x2fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat2x4>)
-			programUniformMatrix2x4fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4x2>)
-			programUniformMatrix4x2fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3x4>)
-			programUniformMatrix3x4fv(program, location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4x3>)
-			programUniformMatrix4x3fv(program, location, count, transpose, v);
-	}
-
-	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform1f(unsigned int program, int location, float v0);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniform2f(unsigned int program, int location, float v0, float v1);
@@ -485,6 +433,58 @@ namespace GL
 	GLCW_API void programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const float* value);
 	//glProgramUniform — Specify the value of a uniform variable for a specified program object
 	GLCW_API void programUniformMatrix4x3fv(unsigned int program, int location, int count, bool transpose, const mat4x3& value);
+
+	//glProgramUniform — Specify the value of a uniform variable for a specified program object
+	template <typename T>
+	void programUniform(unsigned int program, int location, const T& v, int count = 1, bool transpose = false)
+	{
+		if constexpr (std::is_same_v<T, float>)
+			programUniform1f(program, location, v);
+		if constexpr (std::is_same_v<T, fvec2>)
+			programUniform2f(program, location, v);
+		if constexpr (std::is_same_v<T, fvec3>)
+			programUniform3f(program, location, v);
+		if constexpr (std::is_same_v<T, fvec4>)
+			programUniform4f(program, location, v);
+
+		if constexpr (std::is_same_v<T, int>)
+			programUniform1i(program, location, v);
+		if constexpr (std::is_same_v<T, ivec2>)
+			programUniform2i(program, location, v);
+		if constexpr (std::is_same_v<T, ivec3>)
+			programUniform3i(program, location, v);
+		if constexpr (std::is_same_v<T, ivec4>)
+			programUniform4i(program, location, v);
+
+		if constexpr (std::is_same_v<T, unsigned int>)
+			programUniform1ui(program, location, v);
+		if constexpr (std::is_same_v<T, uvec2>)
+			programUniform2ui(program, location, v);
+		if constexpr (std::is_same_v<T, uvec3>)
+			programUniform3ui(program, location, v);
+		if constexpr (std::is_same_v<T, uvec4>)
+			programUniform4ui(program, location, v);
+
+		if constexpr (std::is_same_v<T, mat2>)
+			programUniformMatrix2fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3>)
+			programUniformMatrix3fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4>)
+			programUniformMatrix4fv(program, location, count, transpose, v);
+
+		if constexpr (std::is_same_v<T, mat2x3>)
+			programUniformMatrix2x3fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3x2>)
+			programUniformMatrix3x2fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat2x4>)
+			programUniformMatrix2x4fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4x2>)
+			programUniformMatrix4x2fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3x4>)
+			programUniformMatrix3x4fv(program, location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4x3>)
+			programUniformMatrix4x3fv(program, location, count, transpose, v);
+	}
 #endif
 
 #if (!GL_DESKTOP) || VC(4, 1)
@@ -506,62 +506,6 @@ namespace GL
 	//glShaderStorageBlockBinding — change an active shader storage block binding
 	GLCW_API void shaderStorageBlockBinding(unsigned int program, unsigned int storageBlockIndex, unsigned int storageBlockBinding);
 #endif
-
-	//glUniform — Specify the value of a uniform variable for the current program object
-	template <typename T>
-	void uniform(int location, const T& v, int count = 0, bool transpose = false)
-	{
-		if constexpr (std::is_same_v<T, float>)
-			uniform1f(location, v);
-		if constexpr (std::is_same_v<T, uvec2>)
-			uniform2f(location, v);
-		if constexpr (std::is_same_v<T, uvec3>)
-			uniform3f(location, v);
-		if constexpr (std::is_same_v<T, uvec4>)
-			uniform4f(location, v);
-
-		if constexpr (std::is_same_v<T, int>)
-			uniform1i(location, v);
-		if constexpr (std::is_same_v<T, ivec2>)
-			uniform2i(location, v);
-		if constexpr (std::is_same_v<T, ivec3>)
-			uniform3i(location, v);
-		if constexpr (std::is_same_v<T, ivec4>)
-			uniform4i(location, v);
-
-#if GL_DESKTOP || EC(3, 0)
-		if constexpr (std::is_same_v<T, unsigned int>)
-			uniform1ui(location, v);
-		if constexpr (std::is_same_v<T, uvec2>)
-			uniform2ui(location, v);
-		if constexpr (std::is_same_v<T, uvec3>)
-			uniform3ui(location, v);
-		if constexpr (std::is_same_v<T, uvec4>)
-			uniform4ui(location, v);
-#endif
-
-		if constexpr (std::is_same_v<T, mat2>)
-			uniformMatrix2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3>)
-			uniformMatrix3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4>)
-			uniformMatrix4fv(location, count, transpose, v);
-
-#if GL_DESKTOP || EC(3, 0)
-		if constexpr (std::is_same_v<T, mat2x3>)
-			uniformMatrix2x3fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3x2>)
-			uniformMatrix3x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat2x4>)
-			uniformMatrix2x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4x2>)
-			uniformMatrix4x2fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat3x4>)
-			uniformMatrix3x4fv(location, count, transpose, v);
-		if constexpr (std::is_same_v<T, mat4x3>)
-			uniformMatrix4x3fv(location, count, transpose, v);
-#endif
-	}
 
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniform1f(int location, float v0);
@@ -689,6 +633,62 @@ namespace GL
 	GLCW_API void uniformMatrix4x3fv(int location, int count, bool transpose, const float* value);
 	//glUniform — Specify the value of a uniform variable for the current program object
 	GLCW_API void uniformMatrix4x3fv(int location, int count, bool transpose, const mat4x3& value);
+
+	//glUniform — Specify the value of a uniform variable for the current program object
+	template <typename T>
+	void uniform(int location, const T& v, int count = 1, bool transpose = false)
+	{
+		if constexpr (std::is_same_v<T, float>)
+			uniform1f(location, v);
+		if constexpr (std::is_same_v<T, uvec2>)
+			uniform2f(location, v);
+		if constexpr (std::is_same_v<T, uvec3>)
+			uniform3f(location, v);
+		if constexpr (std::is_same_v<T, uvec4>)
+			uniform4f(location, v);
+
+		if constexpr (std::is_same_v<T, int>)
+			uniform1i(location, v);
+		if constexpr (std::is_same_v<T, ivec2>)
+			uniform2i(location, v);
+		if constexpr (std::is_same_v<T, ivec3>)
+			uniform3i(location, v);
+		if constexpr (std::is_same_v<T, ivec4>)
+			uniform4i(location, v);
+
+#if GL_DESKTOP || EC(3, 0)
+		if constexpr (std::is_same_v<T, unsigned int>)
+			uniform1ui(location, v);
+		if constexpr (std::is_same_v<T, uvec2>)
+			uniform2ui(location, v);
+		if constexpr (std::is_same_v<T, uvec3>)
+			uniform3ui(location, v);
+		if constexpr (std::is_same_v<T, uvec4>)
+			uniform4ui(location, v);
+#endif
+
+		if constexpr (std::is_same_v<T, mat2>)
+			uniformMatrix2fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3>)
+			uniformMatrix3fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4>)
+			uniformMatrix4fv(location, count, transpose, v);
+
+#if GL_DESKTOP || EC(3, 0)
+		if constexpr (std::is_same_v<T, mat2x3>)
+			uniformMatrix2x3fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3x2>)
+			uniformMatrix3x2fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat2x4>)
+			uniformMatrix2x4fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4x2>)
+			uniformMatrix4x2fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat3x4>)
+			uniformMatrix3x4fv(location, count, transpose, v);
+		if constexpr (std::is_same_v<T, mat4x3>)
+			uniformMatrix4x3fv(location, count, transpose, v);
+#endif
+	}
 
 	//glUniformBlockBinding — assign a binding point to an active uniform block
 	GLCW_API void uniformBlockBinding(unsigned int program, unsigned int uniformBlockIndex, unsigned int uniformBlockBinding);
