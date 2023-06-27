@@ -1,6 +1,7 @@
 #include "Init.h"
 #include "glew/glew.h"
 
+#include <iostream>
 #include <corecrt_terminate.h>
 
 namespace GL
@@ -11,6 +12,8 @@ namespace GL
 		if (glewInit() != GLEW_OK)
 		{
 			//glew init failed
+
+			std::cout << "GLEW INIT FAILED" << std::endl;
 
 			terminate();
 		}
