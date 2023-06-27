@@ -57,7 +57,10 @@ namespace GL
 	//glDispatchCompute — launch one or more compute work groups
 	GLCW_API void dispatchCompute(unsigned int num_groups_x, unsigned int num_groups_y, unsigned int num_groups_z);
 	//glDispatchCompute — launch one or more compute work groups
-	GLCW_API void dispatchCompute(const uvec3& num_groups);
+	inline void dispatchCompute(const uvec3& num_groups)
+	{
+		dispatchCompute(num_groups.x, num_groups.y, num_groups.z);
+	}
 
 	//glDispatchComputeIndirect — launch one or more compute work groups using parameters stored in a buffer
 	GLCW_API void dispatchComputeIndirect(long long indirect);
@@ -78,7 +81,12 @@ namespace GL
 	//glGetMultisamplefv — retrieve the location of a sample
 	GLCW_API void getMultisamplefv(unsigned int index, float* val);
 	//glGetMultisamplefv — retrieve the location of a sample
-	GLCW_API fvec2 getMultisamplefv(unsigned int index);
+	inline fvec2 getMultisamplefv(unsigned int index)
+	{
+		fvec2 temp;
+		getMultisamplefv(index, &temp.x);
+		return temp;
+	}
 #endif
 #if VC(4, 2) || EC(3, 1)
 	//glMemoryBarrier — defines a barrier ordering memory transactions

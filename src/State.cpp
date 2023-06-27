@@ -7,11 +7,6 @@ inline void GL::blendColor(float r, float g, float b, float a)
 	glBlendColor(r, g, b, a);
 }
 
-inline void GL::blendColor(const fvec4& rgba)
-{
-	glBlendColor(rgba.x, rgba.y, rgba.z, rgba.w);
-}
-
 inline void GL::blendEquation(GL_ENUM eq)
 {
 	glBlendEquation(static_cast<unsigned int>(eq));
@@ -79,20 +74,10 @@ inline void GL::colorMask(bool red, bool green, bool blue, bool alpha)
 	glColorMask(red, green, blue, alpha);
 }
 
-inline void GL::colorMask(const bvec4& rgba)
-{
-	colorMask(rgba.x, rgba.y, rgba.z, rgba.w);
-}
-
 #if GL_DESKTOP
 	inline void GL::colorMaski(unsigned int drawBuffer, bool red, bool green, bool blue, bool alpha)
 	{
 		glColorMaski(drawBuffer, red, green, blue, alpha);
-	}
-
-	inline void GL::colorMaski(unsigned int drawBuffer, const bvec4& rgba)
-	{
-		colorMaski(drawBuffer, rgba.x, rgba.y, rgba.z, rgba.w);
 	}
 #endif
 
@@ -116,21 +101,11 @@ inline void GL::depthRange(double near, double far)
 {
 	glDepthRange(near, far);
 }
-
-inline void GL::depthRange(const dvec2& nearAndFar)
-{
-	depthRange(nearAndFar.x, nearAndFar.y);
-}
 #endif
 #if VC(4, 1) || (!GL_DESKTOP)
 inline void GL::depthRangef(float near, float far)
 {
 	glDepthRangef(near, far);
-}
-
-inline void GL::depthRangef(const fvec2& nearAndFar)
-{
-	depthRangef(nearAndFar.x, nearAndFar.y);
 }
 #endif
 
@@ -143,11 +118,6 @@ inline void GL::depthRangeArrayv(unsigned int first, int count, const std::vecto
 inline void GL::depthRangeIndexed(unsigned int index, double nearVal, double farVal)
 {
 	glDepthRangeIndexed(index, nearVal, farVal);
-}
-
-inline void GL::depthRangeIndexed(unsigned int index, const dvec2& nearAndFar)
-{
-	depthRangeIndexed(index, nearAndFar.x, nearAndFar.y);
 }
 #endif
 
@@ -397,11 +367,6 @@ inline void GL::scissor(int x, int y, int width, int height)
 	glScissor(x, y, width, height);
 }
 
-inline void GL::scissor(const ivec4& xYWidthHeight)
-{
-	scissor(xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
-}
-
 #if GL_DESKTOP
 inline void GL::scissorArrayv(unsigned int first, int count, const std::vector<int>& values)
 {
@@ -411,11 +376,6 @@ inline void GL::scissorArrayv(unsigned int first, int count, const std::vector<i
 inline void GL::scissorIndexed(unsigned int index, int left, int bottom, int width, int height)
 {
 	glScissorIndexed(index, left, bottom, width, height);
-}
-
-inline void GL::scissorIndexed(unsigned int index, const ivec4& leftBottomWidthHeight)
-{
-	scissorIndexed(index, leftBottomWidthHeight.x, leftBottomWidthHeight.y, leftBottomWidthHeight.z, leftBottomWidthHeight.w);
 }
 
 inline void GL::scissorIndexedv(unsigned int index, const std::vector<int>& values)
@@ -459,11 +419,6 @@ inline void GL::viewport(int x, int y, int width, int height)
 	glViewport(x, y, width, height);
 }
 
-inline void GL::viewport(const ivec4& xYWidthHeight)
-{
-	viewport(xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
-}
-
 #if VC(4, 1)
 inline void GL::viewportArrayv(unsigned int first, int count, const std::vector<float>& values)
 {
@@ -473,11 +428,6 @@ inline void GL::viewportArrayv(unsigned int first, int count, const std::vector<
 inline  void GL::viewportIndexedf(unsigned int index, float x, float y, float width, float height)
 {
 	glViewportIndexedf(index, x, y, width, height);
-}
-
-inline void GL::viewportIndexedf(unsigned int index, const fvec4& xYWidthHeight)
-{
-	viewportIndexedf(index, xYWidthHeight.x, xYWidthHeight.y, xYWidthHeight.z, xYWidthHeight.w);
 }
 
 inline void GL::viewportIndexedfv(unsigned int index, const std::vector<float>& values)

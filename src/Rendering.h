@@ -52,7 +52,7 @@ namespace GL
 	//glClearColor — specify clear values for the color buffers
 	GLCW_API void clearColor(float red, float green, float blue, float alpha);
 	//glClearColor — specify clear values for the color buffers
-	GLCW_API inline void clearColor(const fvec4& rgba)
+	inline void clearColor(const fvec4& rgba)
 	{
 		clearColor(rgba.x, rgba.y, rgba.z, rgba.w);
 	}
